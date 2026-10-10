@@ -29,6 +29,6 @@ if (!isset($currentPage))     $currentPage     = '';
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Techno Coderz Custom CSS -->
-  <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/technocoderz.css?v=20261009">
+  <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/technocoderz.css?v=<?= filemtime(__DIR__ . '/../assets/css/technocoderz.css') ?>">
 </head>
 <body>

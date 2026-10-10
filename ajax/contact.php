@@ -50,10 +50,10 @@ if ($course !== '' && $subject === '') {
 try {
     $pdo  = getDB();
     $stmt = $pdo->prepare("
-        INSERT INTO contact_messages (name, email, phone, course, subject, message)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO contact_messages (name, email, phone, subject, message)
+        VALUES (?, ?, ?, ?, ?)
     ");
-    $stmt->execute([$name, $email, $phone, $course, $subject, $message]);
+    $stmt->execute([$name, $email, $phone, $subject, $message]);
     echo json_encode(['success' => true, 'message' => 'Your message has been received!']);
 } catch (PDOException $e) {
     error_log('Contact form DB error: ' . $e->getMessage());

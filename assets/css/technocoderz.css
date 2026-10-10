@@ -3562,6 +3562,24 @@ p { overflow-wrap: anywhere; }
   color: var(--text-dark);
 }
 
+/* Keep contact and brochure forms readable and contained on small screens. */
+.tc-contact-page .tc-form-label,
+.tc-brochure-page .tc-form-label { color: var(--text-dark); }
+.tc-contact-page .tc-contact-card > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+.tc-contact-page .tc-contact-card { height: auto; }
+.tc-contact-page select.tc-form-control,
+.tc-brochure-page select.tc-form-control { color-scheme: light; }
+.tc-brochure-page .bc-empty { grid-column: 1 / -1; text-align: center; color: var(--text-muted); }
+
+@media (max-width: 575.98px) {
+  .tc-contact-page .tc-contact-card { padding: 20px 16px; gap: 12px; }
+  .tc-contact-page #submitContact { width: 100%; }
+  .tc-brochure-page .tc-download-panel { padding: 24px 18px; }
+  .tc-brochure-page .bc-acc-head .tc-module-head-body { flex-basis: 0; }
+  .tc-brochure-page .bc-pdf { padding: 22px 18px; }
+  .tc-brochure-page .bc-pdf-top > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+}
+
 /* ---- Orange primary CTA (uniform across pages) ---- */
 .tc-btn-cta {
   background: #FF6B00;

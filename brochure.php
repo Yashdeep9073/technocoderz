@@ -68,7 +68,9 @@ $siteSettings = [];
 try {
     $stmt = $pdo->query("SELECT setting_key, setting_value FROM site_settings");
     while ($row = $stmt->fetch()) {
-        $siteSettings[$row['setting_key']] = $row['setting_value'];
+        if (trim($row['setting_value'] ?? '') !== '') {
+            $siteSettings[$row['setting_key']] = $row['setting_value'];
+        }
     }
 } catch (Exception $ex) {
     $siteSettings = $siteSettings ?: [];
@@ -111,7 +113,7 @@ require_once __DIR__ . '/includes/navbar.php';
     var(--bg-light);
   border-bottom:1px solid rgba(30,41,59,.08);
 }
-.bc-hero-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;}
+.bc-hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:center;}
 .bc-eyebrow{
   display:inline-flex;align-items:center;gap:7px;padding:6px 15px;border-radius:999px;
   background:rgba(255,107,0,.10);border:1px solid rgba(255,107,0,.28);
@@ -172,7 +174,7 @@ require_once __DIR__ . '/includes/navbar.php';
 .bc-head p{color:var(--text-muted);font-size:1rem;margin:0;}
 
 /* Catalog overview cards */
-.bc-catalog{display:grid;grid-template-columns:1fr;gap:20px;}
+.bc-catalog{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;}
 .bc-cat-card{
   background:#ffffff;border:1px solid rgba(30,41,59,.09);border-radius:20px;padding:24px;
   box-shadow:0 8px 26px rgba(30,41,59,.06);display:flex;flex-direction:column;height:100%;
@@ -233,8 +235,8 @@ require_once __DIR__ . '/includes/navbar.php';
   background:rgba(255,107,0,.10);color:var(--primary-orange);font-size:1.05rem;transition:transform .3s ease, background .3s ease;
 }
 .bc-acc.open .bc-acc-toggle{transform:rotate(180deg);background:var(--primary-orange);color:#ffffff;}
-.bc-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 22px;}
-.bc-acc.open .bc-acc-body{max-height:1600px;padding-bottom:22px;}
+.bc-acc-body{display:none;padding:0 22px;}
+.bc-acc.open .bc-acc-body{display:block;padding-bottom:22px;}
 .bc-acc-body .tc-module-list{margin-bottom:16px;}
 .bc-acc-skills{display:flex;flex-wrap:wrap;gap:7px;padding-top:14px;border-top:1px dashed rgba(30,41,59,.14);}
 .bc-acc-skills::before{
@@ -269,21 +271,23 @@ require_once __DIR__ . '/includes/navbar.php';
 .bc-info-card a b{display:block;font-weight:700;}
 
 /* Download / lead section */
-.bc-download-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;}
+.bc-download-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start;}
+.bc-hero-grid > *, .bc-catalog > *, .bc-info-card > div, .bc-download-grid > *{min-width:0;}
+.bc-cat-card, .bc-acc-body{overflow-wrap:anywhere;}
 
 @media (min-width: 576px){
-  .bc-catalog{grid-template-columns:repeat(2,1fr);}
+  .bc-catalog{grid-template-columns:repeat(2,minmax(0,1fr));}
   .bc-hl{grid-template-columns:repeat(2,1fr);}
   .bc-info{grid-template-columns:repeat(2,1fr);}
 }
 @media (min-width: 768px){
-  .bc-hero-grid{grid-template-columns:1.15fr .85fr;}
+  .bc-hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);}
   .bc-info{grid-template-columns:repeat(3,1fr);}
 }
 @media (min-width: 992px){
-  .bc-catalog{grid-template-columns:repeat(4,1fr);}
+  .bc-catalog{grid-template-columns:repeat(3,minmax(0,1fr));}
   .bc-hl{grid-template-columns:repeat(4,1fr);}
-  .bc-download-grid{grid-template-columns:1.05fr .95fr;gap:32px;}
+  .bc-download-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:32px;}
 }
 @media (max-width: 575.98px){
   .bc-hero{padding:44px 0 40px;}
@@ -293,7 +297,7 @@ require_once __DIR__ . '/includes/navbar.php';
 }
 </style>
 
-<div class="tc-page-light">
+<div class="tc-page-light tc-brochure-page">
 
 <!-- ============ HERO BANNER: catalogue overview + Download PDF CTA ============ -->
 <section class="bc-hero">
@@ -318,13 +322,15 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <ul class="bc-chips">
           <?php foreach ($courses as $c): ?>
-          <li class="bc-chip"><i class="bi bi-check-circle-fill"></i> <?= e($c['category']) ?></li>
+          <li class="bc-chip"><i class="bi bi-check-circle-fill"></i> <?= e($c['category'] ?? $c['title']) ?></li>
           <?php endforeach; ?>
         </ul>
 
         <ul class="bc-stats">
           <li class="bc-stat"><b><?= $totalCourses ?></b><span>Programmes</span></li>
-          <li class="bc-stat"><b><?= $totalLessons ?>+</b><span>Lessons</span></li>
+          <?php if ($totalLessons > 0): ?>
+          <li class="bc-stat"><b><?= $totalLessons ?></b><span>Lessons</span></li>
+          <?php endif; ?>
           <li class="bc-stat"><b>32</b><span>Live Projects</span></li>
           <li class="bc-stat"><b>100%</b><span>Career Support</span></li>
         </ul>
@@ -388,21 +394,26 @@ require_once __DIR__ . '/includes/navbar.php';
   <div class="container">
     <div class="bc-head reveal">
       <span class="tc-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Catalog Overview</span>
-      <h2 class="tc-section-title" style="font-size:clamp(1.6rem,2.6vw,2.3rem);">Four Programmes.<br><span>One Career-Focused Path.</span></h2>
+      <h2 class="tc-section-title" style="font-size:clamp(1.6rem,2.6vw,2.3rem);"><?= $totalCourses ?> Programmes.<br><span>One Career-Focused Path.</span></h2>
       <p>Each track is built with hiring managers — syllabus, tools and projects mirror what teams actually use on the job.</p>
     </div>
 
     <div class="bc-catalog">
+      <?php if (!$courses): ?>
+      <p class="bc-empty">Our course catalogue is being updated. Please contact us for programme details.</p>
+      <?php endif; ?>
       <?php foreach ($courses as $i => $course): ?>
       <article class="bc-cat-card reveal" style="transition-delay:<?= ($i % 4) * 0.07 ?>s;">
         <div class="bc-cat-top">
           <span class="bc-cat-num"><?= str_pad($i + 1, 2, '0', STR_PAD_LEFT) ?></span>
-          <span class="bc-cat-level"><?= e($course['category']) ?></span>
+          <span class="bc-cat-level"><?= e($course['category'] ?? $course['level'] ?? 'All Levels') ?></span>
         </div>
         <h3><?= e($course['title']) ?></h3>
         <div class="bc-cat-meta">
+          <?php if (($course['lessons'] ?? 0) > 0): ?>
           <span><i class="bi bi-play-circle"></i> <?= (int) $course['lessons'] ?> Lessons</span>
-          <span><i class="bi bi-clock"></i> <?= e($course['duration']) ?></span>
+          <?php endif; ?>
+          <span><i class="bi bi-clock"></i> <?= e($course['duration'] ?? 'Contact us for duration') ?></span>
         </div>
         <ul class="bc-cat-modules">
           <?php
@@ -442,7 +453,7 @@ require_once __DIR__ . '/includes/navbar.php';
       <div class="bc-toolbar-tabs" id="bcTabs">
         <button type="button" class="bc-tab is-active" data-target="all">All Programmes</button>
         <?php foreach ($courses as $i => $c): ?>
-        <button type="button" class="bc-tab" data-target="bc-acc-<?= $i ?>"><?= e($c['category']) ?></button>
+        <button type="button" class="bc-tab" data-target="bc-acc-<?= $i ?>"><?= e($c['category'] ?? $c['title']) ?></button>
         <?php endforeach; ?>
       </div>
       <div class="bc-expand">
@@ -462,8 +473,10 @@ require_once __DIR__ . '/includes/navbar.php';
           <span class="tc-module-head-body" style="display:block;">
             <span class="bc-acc-title" style="display:block;"><?= e($course['title']) ?></span>
             <span class="bc-acc-meta">
+              <?php if (($course['lessons'] ?? 0) > 0): ?>
               <span><i class="bi bi-play-circle"></i> <?= (int) $course['lessons'] ?> Lessons</span>
-              <span><i class="bi bi-clock"></i> <?= e($course['duration']) ?></span>
+              <?php endif; ?>
+              <span><i class="bi bi-clock"></i> <?= e($course['duration'] ?? 'Contact us for duration') ?></span>
               <span><i class="bi bi-collection"></i> <?= count($modules) ?> Modules</span>
             </span>
           </span>
@@ -684,10 +697,10 @@ require_once __DIR__ . '/includes/navbar.php';
  <h2 class="tc-section-title">Ready to Be Part of<br>the <span>Techno Coderz</span> Story?</h2>
  <p>Join 1,200+ students who have already built their tech careers with us.</p>
  <div class="tc-cta-actions">
- <a href="http://localhost/Tech/courses.php" class="tc-btn tc-btn-primary tc-btn-lg">
+ <a href="<?= SITE_URL ?>/courses.php" class="tc-btn tc-btn-primary tc-btn-lg">
  <i class="bi bi-book-fill"></i> Explore Courses
  </a>
- <a href="http://localhost/Tech/contact.php" class="tc-btn tc-btn-secondary tc-btn-lg">
+ <a href="<?= SITE_URL ?>/contact.php" class="tc-btn tc-btn-secondary tc-btn-lg">
  <i class="bi bi-chat-dots-fill"></i> Contact Us
  </a>
  </div>

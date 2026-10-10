@@ -125,7 +125,9 @@ require_once __DIR__ . '/includes/navbar.php';
     <!-- Course Grid (DreamsLMS style) -->
     <div class="row g-4" id="courseGrid">
       <?php foreach ($courses as $i => $course):
-          $catSlug  = slugify($course['category'] ?? '');
+          $category = $course['category'] ?? '';
+          $catSlug  = slugify($category);
+          $lessons  = (int) ($course['lessons'] ?? 0);
           $techs    = array_values(array_filter(array_map('trim', explode(',', $course['technologies'] ?? ''))));
           $hl       = array_values(array_filter(array_map('trim', explode(',', $course['highlights'] ?? ''))));
           $haystack = strtolower($course['title'] . ' ' . ($course['short_description'] ?? '') . ' ' . ($course['category'] ?? '') . ' ' . ($course['level'] ?? '') . ' ' . implode(' ', $techs) . ' ' . implode(' ', $hl));
@@ -143,8 +145,10 @@ require_once __DIR__ . '/includes/navbar.php';
             <?php else: ?>
             <div class="tc-course-icon-wrap"><i class="<?= e($course['icon'] ?? 'bi bi-laptop') ?>"></i></div>
             <?php endif; ?>
-            <span class="tc-course-badge"><i class="bi bi-clock-fill"></i> <?= e($course['duration']) ?></span>
-            <span class="tc-course-cat"><?= e($course['category']) ?></span>
+            <span class="tc-course-badge"><i class="bi bi-clock-fill"></i> <?= e($course['duration'] ?? '') ?></span>
+            <?php if ($category !== ''): ?>
+            <span class="tc-course-cat"><?= e($category) ?></span>
+            <?php endif; ?>
           </div>
 
           <div class="tc-course-body">
@@ -152,21 +156,21 @@ require_once __DIR__ . '/includes/navbar.php';
             <!-- Lesson count / duration / level -->
             <div class="tc-course-stats">
               <div class="tc-course-stat">
-                <b><?= (int) $course['lessons'] > 0 ? (int) $course['lessons'] : '—' ?></b>
+                <b><?= $lessons > 0 ? $lessons : '—' ?></b>
                 <span>Lessons</span>
               </div>
               <div class="tc-course-stat">
-                <b><?= e($course['duration']) ?></b>
+                <b><?= e($course['duration'] ?? '') ?></b>
                 <span>Duration</span>
               </div>
               <div class="tc-course-stat">
-                <b><?= e($course['level']) ?></b>
+                <b><?= e($course['level'] ?? '') ?></b>
                 <span>Level</span>
               </div>
             </div>
 
             <h2 class="tc-course-title"><?= e($course['title']) ?></h2>
-            <p class="tc-course-desc"><?= e($course['short_description']) ?></p>
+            <p class="tc-course-desc"><?= e($course['short_description'] ?? '') ?></p>
 
             <!-- Key highlights -->
             <?php if ($hl): ?>

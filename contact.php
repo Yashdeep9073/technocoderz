@@ -13,12 +13,16 @@ $csrf            = generateCsrfToken();
 $pdo = getDB();
 $settings = [];
 $stmt = $pdo->query("SELECT setting_key, setting_value FROM site_settings");
-while ($row = $stmt->fetch()) $settings[$row['setting_key']] = $row['setting_value'];
+while ($row = $stmt->fetch()) {
+    if (trim($row['setting_value'] ?? '') !== '') {
+        $settings[$row['setting_key']] = $row['setting_value'];
+    }
+}
 
 $contactPhone  = $settings['phone']  ?? '+91 98765 43210';
-$contactPhone2 = $settings['phone2'] ?? '+91 98704 43528';
+$contactPhone2 = $settings['phone2'] ?? '';
 $contactEmail  = $settings['email']  ?? 'info@technocoderz.com';
-$contactEmail2 = $settings['email2'] ?? 'hr@technocoderz.com';
+$contactEmail2 = $settings['email2'] ?? '';
 $contactAddr   = $settings['address'] ?? 'Office No. 36, Second Floor, D-185, Phase 8B, Sector 74, Sahibzada Ajit Singh Nagar, Mohali, Punjab 160055';
 $contactCity   = $settings['location'] ?? 'Mohali, Punjab';
 $mapUrl        = 'https://www.google.com/maps/search/?api=1&query=' . urlencode($contactAddr);
@@ -32,7 +36,7 @@ require_once __DIR__ . '/includes/navbar.php';
 <script>window.TC_BASE_URL = '<?= SITE_URL ?>';</script>
 <script>document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('ctCsrf');if(c)c.value='<?=e($csrf)?>';});</script>
 
-<div class="tc-page-light">
+<div class="tc-page-light tc-contact-page">
 
 <!-- Page Hero -->
 <div class="tc-page-hero">
@@ -66,24 +70,24 @@ require_once __DIR__ . '/includes/navbar.php';
 
           <div id="contactMsg" class="mb-3" style="display:none"></div>
 
-          <form id="contactForm" novalidate>
+          <form id="contactForm" onsubmit="event.preventDefault(); submitContact();" novalidate>
             <input type="hidden" name="csrf_token" id="ctCsrf" value="<?= e($csrf) ?>">
 
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="tc-form-label">Full Name <span style="color:var(--primary-orange)">*</span></label>
+                <label for="ctName" class="tc-form-label">Full Name <span style="color:var(--primary-orange)">*</span></label>
                 <input type="text" id="ctName" name="name" class="tc-form-control" placeholder="e.g. Rahul Sharma" required>
               </div>
               <div class="col-md-6">
-                <label class="tc-form-label">Email Address <span style="color:var(--primary-orange)">*</span></label>
+                <label for="ctEmail" class="tc-form-label">Email Address <span style="color:var(--primary-orange)">*</span></label>
                 <input type="email" id="ctEmail" name="email" class="tc-form-control" placeholder="you@example.com" required>
               </div>
               <div class="col-md-6">
-                <label class="tc-form-label">Mobile Number <span style="color:var(--primary-orange)">*</span></label>
+                <label for="ctPhone" class="tc-form-label">Mobile Number <span style="color:var(--primary-orange)">*</span></label>
                 <input type="tel" id="ctPhone" name="phone" class="tc-form-control" placeholder="+91 98765 43210" required>
               </div>
               <div class="col-md-6">
-                <label class="tc-form-label">Select Course <span style="color:var(--primary-orange)">*</span></label>
+                <label for="ctCourse" class="tc-form-label">Select Course <span style="color:var(--primary-orange)">*</span></label>
                 <select id="ctCourse" name="course" class="tc-form-control" required>
                   <option value="">-- Select a Course --</option>
                   <?php foreach ($courses as $c): ?>
@@ -93,11 +97,11 @@ require_once __DIR__ . '/includes/navbar.php';
                 </select>
               </div>
               <div class="col-12">
-                <label class="tc-form-label">Message <span style="color:var(--primary-orange)">*</span></label>
+                <label for="ctMessage" class="tc-form-label">Message <span style="color:var(--primary-orange)">*</span></label>
                 <textarea id="ctMessage" name="message" class="tc-form-control" rows="5" placeholder="Tell us about your background, goals or any specific questions..." required></textarea>
               </div>
               <div class="col-12 mt-4">
-                <button type="button" id="submitContact" onclick="submitContact()" class="tc-btn tc-btn-cta tc-btn-lg" style="justify-content:center;">
+                <button type="submit" id="submitContact" class="tc-btn tc-btn-cta tc-btn-lg" style="justify-content:center;">
                   <i class="bi bi-send-fill"></i> Send Enquiry
                 </button>
                 <p style="font-size:0.78rem; color:var(--text-muted); margin:14px 0 0;">
@@ -123,10 +127,12 @@ require_once __DIR__ . '/includes/navbar.php';
                 <a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone)) ?>"><?= e($contactPhone) ?></a>
                 <span style="color:var(--text-muted); font-weight:500;"> (Admissions)</span>
               </p>
+              <?php if ($contactPhone2 !== ''): ?>
               <p style="margin-top:6px;">
                 <a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone2)) ?>"><?= e($contactPhone2) ?></a>
                 <span style="color:var(--text-muted); font-weight:500;"> (Support)</span>
               </p>
+              <?php endif; ?>
               <p class="tc-contact-sub"><i class="bi bi-clock me-1"></i> Mon – Sat, 9:00 AM – 7:00 PM</p>
             </div>
           </div>
@@ -137,9 +143,11 @@ require_once __DIR__ . '/includes/navbar.php';
             <div>
               <h3>Email Us</h3>
               <p><a class="tc-link" href="mailto:<?= e($contactEmail) ?>"><?= e($contactEmail) ?></a></p>
+              <?php if ($contactEmail2 !== ''): ?>
               <p style="margin-top:6px;"><a class="tc-link" href="mailto:<?= e($contactEmail2) ?>"><?= e($contactEmail2) ?></a>
                 <span style="color:var(--text-muted); font-weight:500;"> (Careers)</span>
               </p>
+              <?php endif; ?>
               <p class="tc-contact-sub"><i class="bi bi-clock me-1"></i> We reply within 24 hours</p>
             </div>
           </div>
