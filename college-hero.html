@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technocoderz — Discover Your Path</title>
+<meta name="description" content="Search 1000+ top universities, take virtual tours, and connect with admissions — all in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-900:#08313d;
+  --teal-800:#0b3d4c;
+  --teal-700:#0f4c5c;
+  --blue:#0e73e6;
+  --blue-dark:#0a5cc4;
+  --teal-accent:#0f766e;
+  --cream:#f7f5ef;
+  --ink:#0d1f2d;
+  --muted:#4b5c6b;
+  --line:rgba(8,49,61,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92%);margin-inline:auto}
+
+/* ---------- Top banner ---------- */
+.topbar{position:relative;z-index:1000;background:#ff6b00;color:#fff;font-size:.83rem}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:9px 0;flex-wrap:wrap}
+.topbar-contact{display:flex;gap:22px;flex-wrap:wrap}
+.topbar a{display:inline-flex;align-items:center;gap:7px;color:#fff;transition:color .2s}
+.topbar a:hover{color:#ffe8d6}
+.topbar-social{display:flex;gap:8px}
+.topbar-social a{
+  width:28px;height:28px;display:grid;place-items:center;
+  border-radius:50%;background:rgba(255,255,255,.09);transition:.2s;
+}
+.topbar-social a:hover{background:#fff;color:#ff6b00;transform:translateY(-2px)}
+
+/* ---------- Header ---------- */
+.site-header{position:relative;background:#fff;border-bottom:1px solid var(--line);z-index:1000}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 0}
+.logo{display:inline-flex;align-items:center;gap:11px;font-size:1.35rem;font-weight:800;letter-spacing:-.02em;color:var(--teal-900)}
+.logo-icon{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,var(--teal-700),var(--blue));
+  display:grid;place-items:center;color:#fff;
+  box-shadow:0 6px 16px rgba(14,115,230,.30);
+}
+.main-nav{display:flex;align-items:center;gap:4px}
+.main-nav li{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+.main-nav .nav-link{
+  padding:9px 14px;border-radius:10px;
+  font-size:.92rem;font-weight:600;color:#2a3d4f;transition:.2s;
+}
+.main-nav .nav-link:hover{color:#ff6b00;background:rgba(255,107,0,.08)}
+.nav-cta{
+  margin-left:10px;padding:11px 24px;border-radius:999px;
+  background:#ff6b00;color:#fff;font-size:.92rem;font-weight:700;
+  box-shadow:0 8px 20px rgba(255,107,0,.32);transition:.2s;
+}
+.nav-cta:hover{background:#e05c00;transform:translateY(-2px)}
+.nav-toggle{
+  display:none;width:44px;height:44px;border:1px solid var(--line);
+  border-radius:12px;background:#fff;color:var(--teal-900);
+  cursor:pointer;place-items:center;
+}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(44px,6vw,74px) 0 clamp(70px,8vw,104px)}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:clamp(34px,5vw,64px);
+  align-items:center;
+}
+.hero h1{
+  font-size:clamp(2rem,3.5vw,3.05rem);
+  line-height:1.13;font-weight:800;letter-spacing:-.025em;
+}
+.accent-blue{color:var(--blue)}
+.accent-teal{color:var(--teal-accent)}
+.hero-sub{
+  margin-top:18px;font-size:clamp(.99rem,1.15vw,1.08rem);
+  color:var(--muted);max-width:58ch;
+}
+
+/* ---------- Search card ---------- */
+.search-card{
+  margin-top:30px;background:#fff;border:1px solid rgba(8,49,61,.07);
+  border-radius:22px;padding:18px;
+  box-shadow:0 22px 50px rgba(8,49,61,.13);
+}
+.search-fields{display:flex;flex-wrap:wrap;gap:13px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px;flex:1 1 155px;position:relative}
+.field-label{
+  font-size:.7rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:#7d8d9b;padding-left:2px;
+}
+.field select,.field input{
+  width:100%;font:inherit;font-size:.9rem;color:var(--ink);
+  background:#fff;border:1px solid #dce4eb;border-radius:12px;
+  padding:12px 14px;outline:none;transition:.2s;
+}
+.field select{
+  appearance:none;padding-right:36px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%230f4c5c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+}
+.field select:focus,.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,115,230,.15)}
+.field-input{flex:2 1 240px}
+.btn-search{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--teal-700);color:#fff;border:none;border-radius:12px;
+  padding:13px 28px;font:inherit;font-size:.95rem;font-weight:700;
+  cursor:pointer;transition:.2s;min-height:47px;
+}
+.btn-search:hover{background:var(--teal-900);transform:translateY(-2px);box-shadow:0 10px 22px rgba(8,49,61,.25)}
+
+/* ---------- Quick actions ---------- */
+.quick-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 27px;border-radius:999px;border:2px solid transparent;
+  font-size:.95rem;font-weight:700;transition:.2s;cursor:pointer;font-family:inherit;
+}
+.btn-solid{background:var(--teal-700);color:#fff}
+.btn-solid:hover{background:var(--teal-900);transform:translateY(-2px);box-shadow:0 12px 26px rgba(8,49,61,.28)}
+.btn-outline{border-color:var(--teal-700);color:var(--teal-700);background:transparent}
+.btn-outline:hover{background:var(--teal-700);color:#fff;transform:translateY(-2px)}
+
+/* ---------- Event Journey Design B ---------- */
+.hero-media{position:relative !important;overflow:visible !important;}
+.event-journey {
+  background: #fbfbfa;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 20px 40px rgba(8,49,61,.12);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+.ej-top {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+}
+.ej-top img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.ej-top-text {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(13,31,45,.75);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.ej-top-subtitle {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  opacity: 0.9;
+}
+.ej-top-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-top: 2px;
+  letter-spacing: .02em;
+}
+.ej-timeline-container {
+  position: relative;
+  margin-top: 16px;
+  padding-bottom: 8px;
+}
+.ej-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: #cbd5e1;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.ej-time-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  background: #fbfbfa;
+  padding: 4px 10px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #475569;
+  width: max-content;
+  margin: 0 auto 16px;
+}
+.ej-time-badge svg {
+  color: #64748b;
+}
+.ej-timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 12px;
+}
+.ej-card-wrapper {
+  position: relative;
+  display: flex;
+}
+.ej-card-wrapper.left {
+  justify-content: flex-end;
+  padding-right: 18px;
+}
+.ej-card-wrapper.right {
+  justify-content: flex-start;
+  padding-left: 18px;
+}
+.ej-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.ej-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+.ej-card-wrapper.left::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 18px;
+  height: 1.5px;
+  background: #cbd5e1;
+}
+.ej-card-wrapper.right::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 18px;
+  height: 1.5px;
+  background: #cbd5e1;
+}
+.ej-time-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin: 16px 0;
+}
+.ej-time {
+  font-size: .85rem;
+  font-weight: 700;
+  color: #475569;
+}
+.ej-time.left {
+  text-align: right;
+  padding-right: 18px;
+}
+.ej-time.right {
+  text-align: left;
+  padding-left: 18px;
+}
+.ej-time-icon {
+  width: 26px;
+  height: 26px;
+  background: #fbfbfa;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+.ej-footer {
+  background: #1e293b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px rgba(30,41,59,.15);
+}
+.ej-footer-text {
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  line-height: 1.4;
+}
+.ej-footer-logo {
+  margin-top: 12px;
+  display: inline-flex;
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  align-items: center;
+  gap: 6px;
+}
+.ej-footer-logo-text {
+  color: #1e3a8a;
+  font-size: .85rem;
+  font-weight: 800;
+}
+.ej-sparkle {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  color: #64748b;
+  opacity: 0.2;
+}
+.ej-sparkle svg {
+  width: 70px;
+  height: 70px;
+}
+@media (max-width: 480px) {
+  .ej-card img { height: 70px; }
+  .ej-time { font-size: 0.75rem; }
+}
+
+/* ---------- Entrance animation ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-content>*{animation:fadeUp .7s ease both}
+.hero-content>*:nth-child(2){animation-delay:.08s}
+.hero-content>*:nth-child(3){animation-delay:.16s}
+.hero-content>*:nth-child(4){animation-delay:.24s}
+.hero-media{animation:fadeUp .7s .18s both}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .field{flex:1 1 140px}
+  .field-input{flex:1 1 100%;order:3}
+  .btn-search{order:4;flex:1 1 auto}
+}
+@media (max-width:960px){
+  .site-header{position:relative}
+  .nav-toggle{display:grid}
+  .main-nav{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:2px;
+    background:#fff;padding:14px 4% 22px;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 24px 40px rgba(8,49,61,.14);
+  }
+  .main-nav.open{display:flex}
+  .main-nav .nav-link{padding:13px 14px;font-size:1rem}
+  .nav-cta{margin:12px 0 0;text-align:center;justify-content:center}
+  .hero-grid{grid-template-columns:1fr;gap:52px}
+  .hero-sub{max-width:none}
+  .tour-card{left:-8px;bottom:-30px}
+}
+@media (max-width:640px){
+  .topbar-inner{justify-content:center;text-align:center}
+  .search-fields{flex-direction:column;align-items:stretch}
+  .field,.field-input{flex:1 1 auto}
+  .btn-search{width:100%;order:0}
+  .quick-actions .btn{width:100%}
+  .collage{grid-template-rows:repeat(3,clamp(96px,26vw,140px))}
+  .tour-card{width:160px;transform:rotate(-6deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. Top banner -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-contact">
+      <a href="mailto:info@technocoderz.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        info@technocoderz.com
+      </a>
+      <a href="tel:+919876543210">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+        +91 98765 43210
+      </a>
+    </div>
+    <div class="topbar-social">
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.2-1.2 1.4-1.2H17V2.6c-.3 0-1.3-.1-2.4-.1-2.5 0-4.1 1.5-4.1 4.2v1.8H8v3h2.5V21H14v-9.5h2.6l.4-3H14z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9H3.7v11.3h2.8V9zM5.1 3.7a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4zM20.3 13.6c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.7V9h-2.8c0 .8 0 11.3 0 11.3h2.8v-6.3c0-.3 0-.7.1-.9.3-.7.9-1.4 1.9-1.4 1.4 0 1.9 1 1.9 2.6v6h2.8v-6.4z"/></svg></a>
+      <a href="#" aria-label="X"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 3h3.1l-6.8 7.8L21.8 21h-6.3l-4.9-6.4L5 21H1.9l7.3-8.3L1.6 3h6.4l4.4 5.8L17.6 3zm-1.1 16.1h1.7L6.9 4.8H5.1l11.4 14.3z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.5-1.7-1.7C18.3 5.2 12 5.2 12 5.2s-6.3 0-7.9.4c-.8.2-1.5.8-1.7 1.7C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.5 1.7 1.7 1.6.4 7.9.4 7.9.4s6.3 0 7.9-.4c.8-.2 1.5-.8 1.7-1.7.4-1.5.4-4.7.4-4.7zM10 15.2V8.8l5.5 3.2L10 15.2z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.php">
+      <img src="assets/images/image.png" alt="Techno Coderz" style="height:42px;width:auto;">
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <li class="nav-item"><a class="nav-link active" href="index.php" style="color: #000000; font-weight: 600;">Home</a></li>
+      <a class="nav-link" href="about.php">About</a>
+      <a class="nav-link" href="courses.php">Courses</a>
+      <a class="nav-link" href="blog.php">Our Blogs</a>
+      <a class="nav-link" href="contact.php">Brouchure</a>
+      <a class="nav-link" href="contact.php">Contact Us</a>
+      <a class="nav-cta" href="contact.php">Register Now</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- 2. Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+
+    <!-- Left content -->
+    <div class="hero-content">
+      <h1>
+        <span class="accent-blue">Discover Your Path:</span> Compare &amp; Connect to the
+        <span class="accent-teal">Perfect College</span>
+      </h1>
+
+      <p class="hero-sub">
+        Use our innovative, single-solution platform to search over 1000+ top universities.
+        Access virtual tours, contact admissions, and make the right choice for your future.
+      </p>
+
+      <form class="search-card" action="courses.php" method="get">
+        <div class="search-fields">
+          <label class="field" for="fLocation">
+            <span class="field-label">Location</span>
+            <select id="fLocation" name="location">
+              <option value="">All Locations</option>
+              <option>Bengaluru</option>
+              <option>Delhi NCR</option>
+              <option>Mumbai</option>
+              <option>Pune</option>
+              <option>Chennai</option>
+              <option>Hyderabad</option>
+            </select>
+          </label>
+
+          <label class="field" for="fMajor">
+            <span class="field-label">Major</span>
+            <select id="fMajor" name="major">
+              <option value="">All Majors</option>
+              <option>Engineering &amp; Technology</option>
+              <option>Business &amp; Management</option>
+              <option>Design &amp; Media</option>
+              <option>Medicine &amp; Health</option>
+              <option>Pure Sciences</option>
+              <option>Arts &amp; Humanities</option>
+            </select>
+          </label>
+
+          <label class="field" for="fCampus">
+            <span class="field-label">Campus Life</span>
+            <select id="fCampus" name="campus">
+              <option value="">Any Experience</option>
+              <option>Urban Campus</option>
+              <option>Residential / Dorm Life</option>
+              <option>Suburban &amp; Green</option>
+              <option>Coastal City</option>
+              <option>Sports Focused</option>
+            </select>
+          </label>
+
+          <label class="field field-input" for="fSearch">
+            <span class="field-label">Search</span>
+            <input id="fSearch" name="q" type="search" placeholder="Search colleges, programs, exams...">
+          </label>
+
+          <button class="btn-search" type="submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            Search
+          </button>
+        </div>
+      </form>
+
+      <div class="quick-actions">
+        <a class="btn btn-solid" href="contact.php">Connect with Admissions</a>
+        <a class="btn btn-outline" href="about.php">Explore Reviews</a>
+      </div>
+    </div>
+
+    <!-- Right side Event Journey (Design B) -->
+    <div class="hero-media">
+      <div class="event-journey">
+        <div class="ej-top">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Students">
+          <div class="ej-top-text">
+            <div class="ej-top-subtitle">EVENT JOURNEY:</div>
+            <div class="ej-top-title">CT GROUP DRIVES TALENT</div>
+          </div>
+        </div>
+        
+        <div class="ej-timeline-container">
+          <div class="ej-timeline-line"></div>
+          
+          <div class="ej-time-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            9:00 AM
+          </div>
+          
+          <div class="ej-timeline-row">
+            <div class="ej-card-wrapper left">
+              <div class="ej-card">
+                <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=400&q=80" alt="Meeting">
+              </div>
+            </div>
+            <div class="ej-card-wrapper right">
+              <div class="ej-card">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=400&q=80" alt="Campus">
+              </div>
+            </div>
+          </div>
+          
+          <div class="ej-time-row">
+            <div class="ej-time left">11:00 AM</div>
+            <div class="ej-time-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="ej-time right">2:00 PM</div>
+          </div>
+          
+          <div class="ej-timeline-row" style="margin-bottom:0;">
+            <div class="ej-card-wrapper left" style="visibility:hidden;"></div>
+            <div class="ej-card-wrapper right">
+              <div class="ej-card">
+                <img src="https://images.unsplash.com/photo-1543269664-56d110901e19?auto=format&fit=crop&w=400&q=80" alt="Speech">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="ej-footer">
+          <div class="ej-footer-text">
+            CONGRATULATIONS TO ALL<br>PLACED STUDENTS
+          </div>
+          <div class="ej-footer-logo">
+            <div style="display:flex;gap:3px;">
+              <span style="background:#1e3a8a;color:#fff;padding:2px 5px;border-radius:2px;font-size:.75rem;font-weight:800;line-height:1;">C</span>
+              <span style="background:#2563eb;color:#fff;padding:2px 5px;border-radius:2px;font-size:.75rem;font-weight:800;line-height:1;">T</span>
+            </div>
+            <span class="ej-footer-logo-text">GROUP</span>
+          </div>
+          <div class="ej-sparkle">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0l2.5 8.5L23 11l-8.5 2.5L12 22l-2.5-8.5L1 11l8.5-2.5z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const nav = document.getElementById('mainNav');
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => nav.classList.remove('open'))
+);
+</script>
+</body>
+</html>

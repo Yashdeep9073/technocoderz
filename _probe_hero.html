@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>probe</title>
+<style>body{font-family:Consolas;margin:20px;} pre{white-space:pre;}</style></head>
+<body>
+<pre id="out">loading...</pre>
+<script>
+(async function () {
+  const out = document.getElementById('out');
+  const w = parseInt(new URLSearchParams(location.search).get('w') || '1400', 10);
+  const iframe = document.createElement('iframe');
+  iframe.src = '/Tech/index.php';
+  iframe.style.width = w + 'px';
+  iframe.style.height = '2400px';
+  iframe.style.border = '1px solid #ccc';
+  document.body.appendChild(iframe);
+  await new Promise(r => iframe.onload = r);
+  await new Promise(r => setTimeout(r, 2000));
+  const d = iframe.contentDocument;
+  const lines = [];
+  const R = el => {
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height), b: Math.round(r.bottom) };
+  };
+  const hero = d.querySelector('section.relative.pt-8');
+  const grid = hero && hero.querySelector('.grid');
+  const left = grid && grid.children[0];
+  const right = grid && grid.children[1];
+  const heading = left && left.querySelector('h1');
+  const para = left && left.querySelector('p');
+  const form = left && left.querySelector('#enquire-form');
+  const btns = left && left.querySelector('.flex.flex-wrap.items-center');
+  const gallery = right && right.querySelector('.tc-hero-gallery');
+  const col1 = gallery && gallery.children[0];
+  const col2 = gallery && gallery.children[1];
+
+  lines.push('-- HERO SECTION -- ' + JSON.stringify(R(hero)));
+  lines.push('-- GRID -- ' + JSON.stringify(R(grid)));
+  lines.push('LEFT COL  ' + JSON.stringify(R(left)));
+  lines.push('RIGHT COL ' + JSON.stringify(R(right)));
+  lines.push('H1[0]     ' + JSON.stringify(R(heading)));
+  lines.push('PARA      ' + JSON.stringify(R(para)));
+  lines.push('FORM      ' + JSON.stringify(R(form)));
+  lines.push('BTN ROW   ' + JSON.stringify(R(btns)));
+  lines.push('GALLERY   ' + JSON.stringify(R(gallery)));
+  lines.push('GAL COL1  ' + JSON.stringify(R(col1)));
+  lines.push('GAL COL2  ' + JSON.stringify(R(col2)));
+  const docs = d.documentElement;
+  lines.push('DOC scrollW ' + docs.scrollWidth + ' clientW ' + docs.clientWidth);
+  const imgs = d.querySelectorAll('.tc-gallery-item img, .tc-team-photo img, .tc-empower-visual img');
+  const broken = [];
+  imgs.forEach(i => { if (!i.complete || i.naturalWidth === 0) broken.push(i.src); });
+  lines.push('BROKEN IMGS ' + (broken.length ? broken.join('\n') : 'none'));
+  out.textContent = lines.join('\n');
+})();
+</script>
+</body></html>

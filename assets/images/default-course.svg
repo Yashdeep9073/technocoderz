@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Techno Coderz course placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c1f3a"/>
+      <stop offset="55%" stop-color="#181b33"/>
+      <stop offset="100%" stop-color="#241a4d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c3ff5"/>
+      <stop offset="100%" stop-color="#00d4aa"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(108,63,245,0.16)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  <circle cx="640" cy="90" r="150" fill="rgba(108,63,245,0.18)"/>
+  <circle cx="140" cy="430" r="120" fill="rgba(0,212,170,0.12)"/>
+  <g transform="translate(400 215)">
+    <rect x="-58" y="-58" width="116" height="116" rx="28" fill="rgba(108,63,245,0.16)" stroke="url(#accent)" stroke-width="3"/>
+    <path d="M-24 -18L-42 0L-24 18" fill="none" stroke="#8b6af8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 -18L42 0L24 18" fill="none" stroke="#00d4aa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 -26L-8 26" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.75"/>
+  </g>
+  <text x="400" y="330" text-anchor="middle" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Techno Coderz</text>
+  <text x="400" y="366" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" letter-spacing="3" fill="#8b90b0">COURSE</text>
+</svg>

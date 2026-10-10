@@ -1,0 +1,215 @@
+<?php 
+// ============================================================ 
+// Techno Coderz — Homepage (Reference Image UI)
+// ============================================================ 
+require_once __DIR__ . '/includes/functions.php'; 
+ 
+$pageTitle       = 'Techno Coderz – IT Training & Software Development'; 
+$pageDescription = 'Techno Coderz provides advanced IT training and cutting-edge software solutions.'; 
+$currentPage     = 'home'; 
+ 
+// Fetch dynamic data 
+$pdo = getDB(); 
+$courses = $pdo->query("SELECT * FROM courses WHERE status = 1 ORDER BY sort_order ASC, id ASC LIMIT 6")->fetchAll(); 
+$services = $pdo->query("SELECT * FROM services WHERE status = 1 ORDER BY sort_order ASC LIMIT 3")->fetchAll(); 
+$projects = $pdo->query("SELECT * FROM projects WHERE status = 1 ORDER BY sort_order ASC LIMIT 3")->fetchAll(); 
+$testimonials = $pdo->query("SELECT * FROM testimonials WHERE status = 1 ORDER BY id ASC LIMIT 3")->fetchAll(); 
+$blogs = $pdo->query("SELECT * FROM blogs WHERE status = 1 ORDER BY created_at DESC LIMIT 3")->fetchAll(); 
+ 
+$csrf = generateCsrfToken(); 
+ 
+require_once __DIR__ . '/includes/header.php'; 
+require_once __DIR__ . '/includes/navbar.php'; 
+?> 
+<script>window.TC_BASE_URL = '<?= SITE_URL ?>';</script> 
+
+<!-- ============================================================ -->
+<!-- HERO SECTION (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-hero">
+  <!-- Top Background Pattern (Simulated) -->
+  <div class="ref-hero-bg"></div>
+
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      
+      <!-- Left Content -->
+      <div class="col-lg-6 ref-hero-content">
+        <h1 class="ref-hero-title">
+          Innovating the<br>
+          Future of Code
+        </h1>
+        <p class="ref-hero-desc">
+          From practical IT training to advanced software engineering, we build cutting-edge tech solutions and careers tailored for your growth.
+        </p>
+        <div class="ref-hero-buttons">
+          <a href="<?= SITE_URL ?>/courses.php" class="ref-btn ref-btn-primary">Explore Our Courses</a>
+          <a href="<?= SITE_URL ?>/projects.php" class="ref-btn ref-btn-outline">View Portfolio</a>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="col-lg-6 ref-hero-image-col">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team collaborating" class="ref-hero-image">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- OVERLAPPING SERVICES CARDS (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-overlap-services">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+      <?php if ($services): ?>
+        <?php foreach (array_slice($services, 0, 3) as $svc): ?>
+        <div class="col-lg-4 col-md-6">
+          <div class="ref-service-card">
+            <div class="ref-service-icon">
+              <i class="<?= e($svc['icon'] ?? 'bi bi-laptop') ?>"></i>
+            </div>
+            <h3 class="ref-service-title"><?= e($svc['title']) ?></h3>
+            <p class="ref-service-desc"><?= e($svc['short_description']) ?></p>
+            <a href="<?= SITE_URL ?>/services.php" class="ref-service-link">Learn More <i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY CHOOSE US (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-section ref-why-choose-us">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      
+      <!-- Left Image -->
+      <div class="col-lg-6">
+        <div class="ref-why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Code on screen" class="ref-why-img">
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-lg-6 ref-why-content">
+        <h2 class="ref-section-title">Why Choose Us</h2>
+        <ul class="ref-check-list">
+          <li><i class="bi bi-check-circle text-primary"></i> Expert Trainers & Developers</li>
+          <li><i class="bi bi-check-circle text-primary"></i> Practical Agile Methodology</li>
+          <li><i class="bi bi-check-circle text-primary"></i> Real-World Project Work</li>
+          <li><i class="bi bi-check-circle text-primary"></i> Lifetime Career Support</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FEATURED PROJECTS (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-section bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="ref-section-title">Featured Projects</h2>
+    </div>
+    
+    <div class="row g-4">
+      <?php if ($projects): ?>
+        <?php foreach ($projects as $proj): ?>
+        <div class="col-lg-4 col-md-6">
+          <div class="ref-project-card">
+            <div class="ref-project-img-wrap">
+              <?php if ($proj['image'] && file_exists(UPLOAD_DIR . 'projects/' . $proj['image'])): ?>
+              <img src="<?= UPLOAD_URL ?>projects/<?= e($proj['image']) ?>" alt="<?= e($proj['title']) ?>" class="ref-project-img">
+              <?php else: ?>
+              <div class="ref-project-img-placeholder"><i class="bi bi-window"></i></div>
+              <?php endif; ?>
+            </div>
+            <div class="ref-project-info">
+              <h4 class="ref-project-title"><?= e($proj['title']) ?></h4>
+              <span class="ref-project-badge"><?= e($proj['category'] ?? 'Application') ?></span>
+              <div class="mt-3">
+                <a href="<?= SITE_URL ?>/projects.php" class="ref-project-link">View Case Study</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TECHNOLOGIES WE USE (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-section">
+  <div class="container text-center">
+    <h2 class="ref-section-title mb-5">Technologies We Teach & Use</h2>
+    <div class="ref-tech-logos">
+      <!-- Simulated text logos to match image layout, normally these would be SVGs -->
+      <span class="ref-tech-item"><i class="bi bi-bootstrap text-primary"></i> Bootstrap</span>
+      <span class="ref-tech-item"><i class="bi bi-filetype-php text-primary"></i> PHP</span>
+      <span class="ref-tech-item"><i class="bi bi-filetype-jsx text-primary"></i> React</span>
+      <span class="ref-tech-item"><i class="bi bi-filetype-java text-primary"></i> Java</span>
+      <span class="ref-tech-item"><i class="bi bi-filetype-sql text-primary"></i> MySQL</span>
+      <span class="ref-tech-item"><i class="bi bi-github text-primary"></i> GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TESTIMONIALS (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-section bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="ref-section-title">Testimonials</h2>
+    </div>
+    
+    <div class="row g-4">
+      <?php if ($testimonials): ?>
+        <?php foreach ($testimonials as $t): ?>
+        <div class="col-lg-4 col-md-6">
+          <div class="ref-testimonial-card">
+            <p class="ref-testimonial-text">"<?= e($t['message']) ?>"</p>
+            <div class="ref-testimonial-author">
+              <div class="ref-author-img">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <div class="ref-author-info">
+                <h5 class="ref-author-name"><?= e($t['name']) ?></h5>
+                <span class="ref-author-role"><?= e($t['designation'] ?? 'Student') ?></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+    <!-- Simple dots for carousel illusion as per design -->
+    <div class="text-center mt-4">
+      <span class="ref-dot active"></span>
+      <span class="ref-dot"></span>
+      <span class="ref-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CTA BANNER (Reference Image Match) -->
+<!-- ============================================================ -->
+<section class="ref-cta-banner">
+  <div class="container text-center">
+    <h2 class="ref-cta-title">Ready to Start Your Journey?</h2>
+    <a href="<?= SITE_URL ?>/contact.php" class="ref-btn ref-btn-outline-white">Get a Free Consultation</a>
+  </div>
+</section>
+
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

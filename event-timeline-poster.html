@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Journey: CT Group Drives Talent</title>
+    <style>
+        :root {
+            --navy: #0F172A;
+            --navy-soft: #0F3E45;
+            --orange: #FF6B00;
+            --muted: #64748B;
+            --line: #111827;
+            --hair: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #E9EDF2;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================================
+           POSTER — 3:4 canvas. Container-query units (cqw) make every
+           inner size proportional to the poster width, so it scales.
+           ============================================================ */
+        .poster {
+            container-type: inline-size;
+            position: relative;
+            width: min(900px, 94vw);
+            aspect-ratio: 3 / 4;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 30px 70px -30px rgba(15, 23, 42, .45);
+        }
+
+        /* ------------------------------ HEADER ------------------------------ */
+        .poster-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3cqw;
+            padding: 4.5cqw 5cqw 3.4cqw;
+            border-bottom: 0.16cqw solid var(--hair);
+        }
+
+        .poster-title {
+            position: relative;
+            margin: 0;
+            max-width: 66%;
+            padding-bottom: 1.6cqw;
+            color: var(--navy);
+            font-size: 3.4cqw;
+            font-weight: 800;
+            line-height: 1.14;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .poster-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 9cqw;
+            height: 0.7cqw;
+            border-radius: 1cqw;
+            background: var(--orange);
+        }
+
+        .poster-logo {
+            display: flex;
+            align-items: center;
+            gap: 1.2cqw;
+            flex-shrink: 0;
+            padding: 1.3cqw 2.2cqw 1.3cqw 1.4cqw;
+            border-radius: 999px;
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .poster-logo .logo-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4.4cqw;
+            height: 4.4cqw;
+            border-radius: 1cqw;
+            background: var(--orange);
+            font-size: 2cqw;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .poster-logo .logo-text {
+            font-size: 1.9cqw;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        /* ---------------------------- TIMELINE ----------------------------- */
+        .timeline {
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 4cqw 5cqw;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 4.5cqw;
+            bottom: 4.5cqw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0.3cqw;
+            background: var(--line);
+            border-radius: 1cqw;
+        }
+
+        .tl-row {
+            display: grid;
+            grid-template-columns: 1fr 14cqw 1fr;
+            align-items: center;
+            gap: 2.6cqw;
+        }
+
+        /* Marker badge on the central line */
+        .tl-marker {
+            justify-self: center;
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1cqw 1.4cqw;
+            border: 0.45cqw solid #ffffff;
+            border-radius: 999px;
+            background: var(--navy);
+            color: #ffffff;
+            font-size: 1.5cqw;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            box-shadow: 0 0.6cqw 1.5cqw rgba(15, 23, 42, .22);
+        }
+
+        /* Photo card */
+        .tl-photo {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16 / 11;
+            border-radius: 2.2cqw;
+            background: var(--hair);
+            box-shadow: 0 1.4cqw 3cqw rgba(15, 23, 42, .14);
+        }
+
+        .tl-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Text block */
+        .tl-info {
+            max-width: 100%;
+        }
+
+        .tl-info.is-left {
+            text-align: right;
+        }
+
+        .tl-stage {
+            display: inline-block;
+            margin-bottom: 1.1cqw;
+            color: var(--orange);
+            font-size: 1.5cqw;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .tl-info h2 {
+            margin: 0 0 1.1cqw;
+            color: var(--navy);
+            font-size: 2.9cqw;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .tl-info p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.75cqw;
+            line-height: 1.5;
+        }
+
+        /* ----------------------------- FOOTER ------------------------------ */
+        .poster-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2cqw;
+            padding: 3.6cqw 5cqw;
+            background: var(--navy);
+            color: #ffffff;
+        }
+
+        .poster-footer .star {
+            flex-shrink: 0;
+            font-size: 2.6cqw;
+            line-height: 1;
+            color: #ffffff;
+        }
+
+        .poster-footer p {
+            margin: 0;
+            color: #ffffff;
+            font-size: 2.5cqw;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: #ffffff;
+            }
+
+            .poster {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <article class="poster" aria-label="Event journey timeline poster">
+
+        <!-- ============================ HEADER ============================ -->
+        <header class="poster-header">
+            <h1 class="poster-title">Event Journey: CT Group Drives Talent</h1>
+            <div class="poster-logo">
+                <span class="logo-mark">CT</span>
+                <span class="logo-text">CT GROUP</span>
+            </div>
+        </header>
+
+        <!-- =========================== TIMELINE ========================== -->
+        <main class="timeline">
+
+            <!-- Stage 01 — 9:00 AM -->
+            <div class="tl-row">
+                <div class="tl-photo">
+                    <img src="assets/images/institute/success-2.jpg" alt="Group of students seated on stage with a red floor">
+                </div>
+                <div class="tl-marker">9:00 AM</div>
+                <div class="tl-info">
+                    <span class="tl-stage">Stage 01</span>
+                    <h2>Inauguration &amp; Vision</h2>
+                    <p>Opening the day with an inspiring ceremony and a shared vision for the journey ahead.</p>
+                </div>
+            </div>
+
+            <!-- Stage 02 — 11:30 AM -->
+            <div class="tl-row">
+                <div class="tl-info is-left">
+                    <span class="tl-stage">Stage 02</span>
+                    <h2>Engagement &amp; Interview</h2>
+                    <p>Students step into the conference room for focused discussions and one-on-one interviews.</p>
+                </div>
+                <div class="tl-marker">11:30 AM</div>
+                <div class="tl-photo">
+                    <img src="assets/images/institute/success-1.jpg" alt="Students and mentors standing in a line on stage with a red carpet">
+                </div>
+            </div>
+
+            <!-- Stage 03 — 2:00 PM -->
+            <div class="tl-row">
+                <div class="tl-photo">
+                    <img src="assets/images/institute/success-4.jpeg" alt="Candidates around a long conference table with laptops during an interview">
+                </div>
+                <div class="tl-marker">2:00 PM</div>
+                <div class="tl-info">
+                    <span class="tl-stage">Stage 03</span>
+                    <h2>Presentation &amp; Knowledge</h2>
+                    <p>A keynote from the podium sharing insights, experience and industry knowledge.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- ============================ FOOTER ============================ -->
+        <footer class="poster-footer">
+            <span class="star">&#9733;</span>
+            <p>Congratulations to all placed students</p>
+            <span class="star">&#9733;</span>
+        </footer>
+
+    </article>
+</body>
+
+</html>

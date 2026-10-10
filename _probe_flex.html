@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; background: #fff; font-family: sans-serif; }
+</style>
+</head>
+<body>
+<div id="grid" style="max-width: 1280px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px;">
+  <div style="grid-column: span 6;">
+    <p>LEFT HERO COLUMN - heading and form go here</p>
+  </div>
+  <div style="grid-column: span 6;">
+    <div id="cw" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start; width: 100%; max-width: 1200px; margin: 0 auto;">
+      <div id="cw-size" style="flex: 1; min-width: 240px;">
+        <img src="https://technocoderz.com/assets/images/about-3.jpg" alt="" style="width: 100%; height: auto; border-radius: 16px; display: block;">
+      </div>
+      <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 20px; transform: translateY(18%);">
+        <div style="background: linear-gradient(135deg, #ff6b35, #e53e3e); border-radius: 16px; text-align: center; padding: 25px 20px; width: 50%; min-width: 180px;"><h1 style="color:#fff;font-size:38px;margin:0;">10+</h1><span style="color:#fff;font-size:14px;">Years of experience</span></div>
+        <img src="https://technocoderz.com/assets/images/thumbs/about-1.png" alt="" style="width: 100%; height: auto; border-radius: 16px; display: block;">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var w = document.getElementById('cw-size').getBoundingClientRect();
+  var c = document.getElementById('cw').getBoundingClientRect();
+  var gridCol = document.getElementById('grid').children[1].getBoundingClientRect();
+  document.getElementById('cw-size').innerHTML = '';
+  var d = document.createElement('div');
+  d.style.cssText = 'position:absolute;background:#fff;border:3px solid red;padding:6px;font-size:40px;z-index:99;';
+  d.innerHTML = 'CW=' + Math.round(c.width) + ' firstColW=' + Math.round(w.width) + ' gridRightCol=' + Math.round(gridCol.width) + ' wrapYet?';
+  document.body.appendChild(d);
+</script>
+</body>
+</html>
