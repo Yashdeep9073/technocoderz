@@ -1810,7 +1810,7 @@ try {
 
                 <!-- RIGHT COLUMN: Hero illustration -->
                 <div class="lg:col-span-6 hero-image">
-                    <img src="assets/images/vector.png"
+                    <img src="assets/images/Vector.png"
                          alt="College discovery illustration"
                          class="hero-vector">
                 </div>
