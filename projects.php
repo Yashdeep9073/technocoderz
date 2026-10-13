@@ -12,11 +12,13 @@ require_once __DIR__ . '/includes/navbar.php';
 <script>window.TC_BASE_URL='<?=SITE_URL?>';</script>
 <script>document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('enquiryCsrf');if(c)c.value='<?=e($csrf)?>';});</script>
 
-<div class="tc-page-header">
-  <div class="container" style="position:relative;z-index:1;">
+<div class="tc-page-light">
+
+<div class="tc-page-hero">
+  <div class="container text-center reveal" style="position:relative;z-index:1;">
     <ul class="tc-breadcrumb"><li><a href="<?=SITE_URL?>"><i class="bi bi-house-fill"></i> Home</a></li><li class="sep">/</li><li class="current">Projects</li></ul>
-    <h1 class="tc-section-title" style="margin-bottom:8px;">Our <span>Projects</span></h1>
-    <p style="color:var(--tc-text-muted);font-size:0.95rem;max-width:560px;">Real applications built by our team and students — showcasing what's possible with practical education and skilled development.</p>
+    <h1 class="tc-section-title" style="margin-bottom:10px;">Our <span>Projects</span></h1>
+    <p style="font-size:1.05rem; max-width:640px; margin:0 auto;">Real applications built by our team and students — showcasing what's possible with practical education and skilled development.</p>
   </div>
 </div>
 
@@ -61,15 +63,19 @@ require_once __DIR__ . '/includes/navbar.php';
   </div>
 </section>
 
-<section class="tc-section tc-cta-section">
-  <div class="container text-center reveal">
-    <h2 class="tc-section-title">Want to Build Something <span>Similar</span>?</h2>
-    <p style="color:var(--tc-text-muted);font-size:0.95rem;max-width:460px;margin:0 auto 32px;">Whether you want to learn how to build these projects or need one built for your business, we can help.</p>
-    <div class="d-flex flex-wrap gap-3 justify-content-center">
-      <a href="<?=SITE_URL?>/courses.php" class="tc-btn tc-btn-primary tc-btn-lg"><i class="bi bi-book-fill"></i> Learn to Build</a>
-      <a href="<?=SITE_URL?>/contact.php" class="tc-btn tc-btn-secondary tc-btn-lg"><i class="bi bi-chat-dots-fill"></i> Hire Us</a>
+<section class="tc-section tc-cta-light-wrap">
+  <div class="container">
+    <div class="tc-cta-light reveal">
+      <h2 class="tc-section-title">Want to Build Something <span>Similar</span>?</h2>
+      <p>Whether you want to learn how to build these projects or need one built for your business, we can help.</p>
+      <div class="tc-cta-actions">
+        <a href="<?= SITE_URL ?>/courses.php" class="tc-btn tc-btn-primary tc-btn-lg"><i class="bi bi-book-fill"></i> Learn to Build</a>
+        <a href="<?= SITE_URL ?>/contact.php" class="tc-btn tc-btn-secondary tc-btn-lg"><i class="bi bi-chat-dots-fill"></i> Hire Us</a>
+      </div>
     </div>
   </div>
 </section>
+
+</div><!-- /.tc-page-light -->
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -10,15 +10,17 @@ require_once __DIR__ . '/includes/navbar.php';
 ?>
 <script>window.TC_BASE_URL='<?=SITE_URL?>';</script>
 
-<div class="tc-cta-section" style="padding: 60px 0;">
+<div class="tc-page-light">
+
+<div class="tc-page-hero">
   <div class="container text-center reveal" style="position:relative;z-index:1;">
-    <ul class="tc-breadcrumb" style="list-style:none; padding:0; display:flex; justify-content:center; gap:10px; margin-bottom:15px; font-size:0.9rem;">
-      <li><a href="<?= SITE_URL ?>" style="color:var(--tc-white);"><i class="bi bi-house-fill"></i> Home</a></li>
-      <li style="color:rgba(255,255,255,0.5);">/</li>
-      <li style="color:rgba(255,255,255,0.8);">Services</li>
+    <ul class="tc-breadcrumb">
+      <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
+      <li class="sep">/</li>
+      <li class="current">Services</li>
     </ul>
-    <h1 class="tc-section-title" style="color:var(--tc-white); margin-bottom:10px;">Our <span>Services</span></h1>
-    <p style="color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:600px; margin:0 auto;">
+    <h1 class="tc-section-title" style="margin-bottom:10px;">Our <span>Services</span></h1>
+    <p style="font-size:1.05rem; max-width:640px; margin:0 auto;">
       Beyond training, Techno Coderz delivers high-quality software development and digital solutions for businesses of all sizes.
     </p>
   </div>
@@ -81,12 +83,18 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- CTA -->
-<section class="tc-cta-section">
-  <div class="container text-center reveal">
-    <h2 class="tc-section-title" style="color:var(--tc-white);">Have a Project <span>In Mind</span>?</h2>
-    <p style="color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:500px; margin:0 auto 32px;">Let's discuss how Techno Coderz can bring your vision to life with a custom-built solution.</p>
-    <a href="<?=SITE_URL?>/contact.php" class="tc-btn tc-btn-primary tc-btn-lg"><i class="bi bi-chat-dots-fill"></i> Start a Conversation</a>
+<section class="tc-section tc-cta-light-wrap">
+  <div class="container">
+    <div class="tc-cta-light reveal">
+      <h2 class="tc-section-title">Have a Project <span>In Mind</span>?</h2>
+      <p>Let's discuss how Techno Coderz can bring your vision to life with a custom-built solution.</p>
+      <div class="tc-cta-actions">
+        <a href="<?= SITE_URL ?>/contact.php" class="tc-btn tc-btn-primary tc-btn-lg"><i class="bi bi-chat-dots-fill"></i> Start a Conversation</a>
+      </div>
+    </div>
   </div>
 </section>
+
+</div><!-- /.tc-page-light -->
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -53,6 +53,46 @@ require_once __DIR__ . '/includes/navbar.php';
   </div>
 </div>
 
+<!-- Contact Info Cards (FiStudy contact-two "Our Address") -->
+<section class="tc-section" style="padding:56px 0 0;">
+  <div class="container">
+    <div class="tc-contact-cards reveal">
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-telephone-fill"></i></div>
+        <div>
+          <h3>Call Us</h3>
+          <p><a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone)) ?>"><?= e($contactPhone) ?></a></p>
+          <p style="font-size:.78rem;">Mon – Sat, 9:00 AM – 7:00 PM</p>
+        </div>
+      </div>
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-envelope-fill"></i></div>
+        <div>
+          <h3>Email Us</h3>
+          <p><a class="tc-link" href="mailto:<?= e($contactEmail) ?>"><?= e($contactEmail) ?></a></p>
+          <p style="font-size:.78rem;">We reply within 24 hours</p>
+        </div>
+      </div>
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+        <div>
+          <h3>Visit Us</h3>
+          <p><?= e($contactCity) ?>, Punjab</p>
+          <p style="font-size:.78rem;">Sahibzada Ajit Singh Nagar, India</p>
+        </div>
+      </div>
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-clock-fill"></i></div>
+        <div>
+          <h3>Working Hours</h3>
+          <p>Mon – Sat</p>
+          <p style="font-size:.78rem;">9:00 AM – 7:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Contact Content -->
 <section class="tc-section">
   <div class="container">
@@ -113,72 +153,50 @@ require_once __DIR__ . '/includes/navbar.php';
         </div>
       </div>
 
-      <!-- Contact Info -->
+      <!-- Contact Info / Quick Help -->
       <div class="col-lg-5 reveal">
 
         <div class="d-flex flex-column gap-3">
 
-          <!-- Phone -->
-          <div class="tc-contact-card">
-            <div class="tc-contact-icon"><i class="bi bi-telephone-fill"></i></div>
-            <div>
-              <h3>Call Us</h3>
-              <p>
-                <a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone)) ?>"><?= e($contactPhone) ?></a>
-                <span style="color:var(--text-muted); font-weight:500;"> (Admissions)</span>
-              </p>
-              <?php if ($contactPhone2 !== ''): ?>
-              <p style="margin-top:6px;">
-                <a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone2)) ?>"><?= e($contactPhone2) ?></a>
-                <span style="color:var(--text-muted); font-weight:500;"> (Support)</span>
-              </p>
-              <?php endif; ?>
-              <p class="tc-contact-sub"><i class="bi bi-clock me-1"></i> Mon – Sat, 9:00 AM – 7:00 PM</p>
-            </div>
+          <!-- Talk to a counselor -->
+          <div class="tc-form-panel tc-help-panel">
+            <span class="tc-help-icon"><i class="bi bi-headset"></i></span>
+            <h3 style="margin:6px 0 8px;">Talk to a Course Counselor</h3>
+            <p>Prefer a quick call? Our admissions team will help you pick the right course, check batch availability and explain fees.</p>
+            <a href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone)) ?>" class="tc-btn tc-btn-cta tc-btn-lg" style="width:100%; justify-content:center;">
+              <i class="bi bi-telephone-fill"></i> <?= e($contactPhone) ?>
+            </a>
+            <?php if ($contactPhone2 !== ''): ?>
+            <p style="margin-top:8px; font-size:.86rem; color:var(--text-muted);">
+              Support: <a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $contactPhone2)) ?>"><?= e($contactPhone2) ?></a>
+            </p>
+            <?php endif; ?>
+            <p style="font-size:.78rem; color:var(--text-muted); margin:12px 0 0;">
+              <i class="bi bi-clock me-1"></i> Mon – Sat, 9:00 AM – 7:00 PM
+            </p>
           </div>
 
-          <!-- Email -->
-          <div class="tc-contact-card">
-            <div class="tc-contact-icon"><i class="bi bi-envelope-fill"></i></div>
-            <div>
-              <h3>Email Us</h3>
-              <p><a class="tc-link" href="mailto:<?= e($contactEmail) ?>"><?= e($contactEmail) ?></a></p>
-              <?php if ($contactEmail2 !== ''): ?>
-              <p style="margin-top:6px;"><a class="tc-link" href="mailto:<?= e($contactEmail2) ?>"><?= e($contactEmail2) ?></a>
-                <span style="color:var(--text-muted); font-weight:500;"> (Careers)</span>
-              </p>
-              <?php endif; ?>
-              <p class="tc-contact-sub"><i class="bi bi-clock me-1"></i> We reply within 24 hours</p>
-            </div>
+          <!-- Directions (link only — no fake map embed) -->
+          <div class="tc-form-panel" style="padding:24px;">
+            <h3 style="font-size:1.05rem; margin-bottom:10px;">Get Directions</h3>
+            <p style="font-size:.9rem; color:var(--text-muted); line-height:1.7; margin:0 0 16px;"><?= e($contactAddr) ?></p>
+            <a href="<?= e($mapUrl) ?>" target="_blank" rel="noopener" class="tc-btn tc-btn-secondary" style="width:100%; justify-content:center;">
+              <i class="bi bi-map me-1"></i> Open in Google Maps
+            </a>
           </div>
 
-          <!-- Office -->
-          <div class="tc-contact-card">
-            <div class="tc-contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
-            <div>
-              <h3>Visit Our Office</h3>
-              <p><?= e($contactAddr) ?></p>
-              <p class="tc-contact-sub">
-                <a class="tc-link" href="<?= e($mapUrl) ?>" target="_blank" rel="noopener">
-                  <i class="bi bi-map me-1"></i> Get Directions
-                </a>
-              </p>
+          <!-- Social -->
+          <div class="tc-form-panel" style="padding:24px; text-align:center;">
+            <h3 style="font-size:1.05rem; margin-bottom:14px;">Follow Us</h3>
+            <div class="d-flex gap-3 justify-content-center">
+              <a href="<?= e($settings['facebook'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="Facebook" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-facebook"></i></a>
+              <a href="<?= e($settings['instagram'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="Instagram" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-instagram"></i></a>
+              <a href="<?= e($settings['linkedin'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="LinkedIn" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-linkedin"></i></a>
+              <a href="<?= e($settings['youtube'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="YouTube" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-youtube"></i></a>
             </div>
           </div>
 
         </div>
-
-        <!-- Social -->
-        <div class="tc-form-panel" style="margin-top:24px; padding:24px; text-align:center;">
-          <h3 style="font-size:1.1rem; margin-bottom:14px;">Follow Us</h3>
-          <div class="d-flex gap-3 justify-content-center">
-            <a href="<?= e($settings['facebook'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="Facebook" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-facebook"></i></a>
-            <a href="<?= e($settings['instagram'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="Instagram" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-instagram"></i></a>
-            <a href="<?= e($settings['linkedin'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="LinkedIn" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-linkedin"></i></a>
-            <a href="<?= e($settings['youtube'] ?? '#') ?>" target="_blank" rel="noopener" aria-label="YouTube" class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;"><i class="bi bi-youtube"></i></a>
-          </div>
-        </div>
-
       </div>
 
     </div><!-- /row -->

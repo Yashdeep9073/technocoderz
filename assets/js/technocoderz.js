@@ -179,7 +179,9 @@ const TC = {
     const search = document.getElementById('courseSearch');
     const empty = document.getElementById('courseEmpty');
     const items = Array.from(grid.querySelectorAll('.course-item'));
-    let level = 'all';
+    const chipWrap = document.getElementById('courseChips');
+    let level = (chipWrap && chipWrap.dataset.active) ? chipWrap.dataset.active : 'all';
+    if (!level) level = 'all';
 
     const apply = () => {
       const q = (search && search.value ? search.value : '').trim().toLowerCase();
@@ -205,8 +207,8 @@ const TC = {
 
     if (search) search.addEventListener('input', apply);
 
-    // Apply search term that was passed in via URL (e.g. ?q=php)
-    if (search && search.value.trim()) apply();
+    // Apply search term that was passed in via URL (e.g. ?q=php) or a category via ?cat=
+    if ((search && search.value.trim()) || level !== 'all') apply();
   },
 
 };
@@ -383,6 +385,48 @@ function submitContact() {
     btn.disabled = false;
     btn.innerHTML = '<i class="bi bi-send-fill"></i> Send Enquiry';
   });
+}
+
+// ----------------------------------------------------------
+// NEWSLETTER (homepage band) — stores the email as an enquiry
+// ----------------------------------------------------------
+function submitNewsletter() {
+  const input = document.getElementById('nlEmail');
+  const msg   = document.getElementById('nlMsg');
+  const email = input ? input.value.trim() : '';
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (msg) { msg.textContent = 'Please enter a valid email address.'; msg.className = 'tc-nl-msg is-error'; }
+    return;
+  }
+
+  const csrfEl = document.getElementById('enquiryCsrf');
+  const fd = new FormData();
+  fd.append('name', 'Newsletter Subscriber');
+  fd.append('email', email);
+  fd.append('phone', '');
+  fd.append('course', 'Newsletter Signup');
+  fd.append('message', 'Newsletter subscription request from the homepage.');
+  fd.append('csrf_token', csrfEl ? csrfEl.value : '');
+
+  if (msg) { msg.textContent = 'Subscribing...'; msg.className = 'tc-nl-msg'; }
+
+  fetch(window.TC_BASE_URL + '/ajax/enquiry.php', { method: 'POST', body: fd })
+    .then(r => r.json())
+    .then(data => {
+      if (!msg) return;
+      if (data.success) {
+        msg.textContent = 'Thanks! You are subscribed.';
+        msg.className = 'tc-nl-msg is-ok';
+        if (input) input.value = '';
+      } else {
+        msg.textContent = data.message || 'Something went wrong. Please try again.';
+        msg.className = 'tc-nl-msg is-error';
+      }
+    })
+    .catch(() => {
+      if (msg) { msg.textContent = 'Network error. Please check your connection.'; msg.className = 'tc-nl-msg is-error'; }
+    });
 }
 
 // ----------------------------------------------------------

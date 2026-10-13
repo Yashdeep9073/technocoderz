@@ -18,7 +18,7 @@ require_once __DIR__ . '/includes/navbar.php';
 ?>
 <script>window.TC_BASE_URL='<?=SITE_URL?>';</script>
 
-<div class="tc-page-light">
+<div class="tc-page-light tc-blog-page">
 
 <div class="tc-page-hero">
   <div class="container text-center reveal" style="position:relative;z-index:1;">

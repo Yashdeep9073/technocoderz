@@ -35,8 +35,10 @@ require_once __DIR__ . '/includes/navbar.php';
 <script>window.TC_BASE_URL = '<?= SITE_URL ?>';</script>
 <script>document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('enquiryCsrf');if(c)c.value='<?=e($csrf)?>';});</script>
 
-<div class="tc-page-header">
-  <div class="container" style="position:relative;z-index:1;">
+<div class="tc-page-light">
+
+<div class="tc-page-hero">
+  <div class="container text-center reveal" style="position:relative;z-index:1;">
     <ul class="tc-breadcrumb">
       <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
       <li class="sep">/</li>
@@ -44,13 +46,11 @@ require_once __DIR__ . '/includes/navbar.php';
       <li class="sep">/</li>
       <li class="current"><?= e($course['title']) ?></li>
     </ul>
-    <div class="tc-page-head-row">
-      <div class="tc-page-head-icon"><i class="<?= e($course['icon'] ?? 'bi bi-code-square') ?>"></i></div>
-      <div>
+    <div class="tc-page-head-row" style="justify-content:center;flex-direction:column;gap:12px;">
+      <div class="tc-page-head-icon" style="align-self:center;"><i class="<?= e($course['icon'] ?? 'bi bi-code-square') ?>"></i></div>
+      <div style="text-align:center;">
         <h1 class="tc-section-title" style="margin-bottom:8px;font-size:clamp(1.6rem,3vw,2.4rem);"><?= e($course['title']) ?></h1>
-        <p style="color:var(--tc-text-muted);font-size:0.95rem;max-width:620px;margin:0;">
-          <?= e($course['short_description']) ?>
-        </p>
+        <p style="font-size:1rem;max-width:720px;margin:0 auto;"><?= e($course['short_description']) ?></p>
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <!-- What You'll Learn -->
         <div class="tc-panel" style="margin-bottom:28px;">
-          <h2 class="tc-panel-title"><i class="bi bi-check2-all" style="color:var(--tc-secondary)"></i> What You'll Learn</h2>
+          <h2 class="tc-panel-title"><i class="bi bi-check2-all" style="color:var(--primary-orange)"></i> What You'll Learn</h2>
           <div class="row g-3">
             <?php
             $learnings = [
@@ -110,7 +110,7 @@ require_once __DIR__ . '/includes/navbar.php';
             ?>
             <div class="col-md-6">
               <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.87rem;color:var(--tc-text);">
-                <i class="bi bi-check-circle-fill" style="color:var(--tc-secondary);margin-top:3px;flex-shrink:0;"></i>
+                <i class="bi bi-check-circle-fill" style="color:var(--primary-orange);margin-top:3px;flex-shrink:0;"></i>
                 <span><?= $l ?></span>
               </div>
             </div>
@@ -138,29 +138,29 @@ require_once __DIR__ . '/includes/navbar.php';
           <!-- Enroll Card -->
           <div class="tc-panel" style="border-color:var(--tc-border);margin-bottom:20px;">
             <div style="text-align:center;margin-bottom:24px;">
-              <div style="width:80px;height:80px;background:rgba(108,63,245,0.15);border:1px solid rgba(108,63,245,0.3);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--tc-primary-light);margin:0 auto 16px;">
+              <div style="width:80px;height:80px;background:var(--primary-orange-soft);border:1px solid rgba(255,107,0,0.25);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--primary-orange);margin:0 auto 16px;">
                 <i class="<?= e($course['icon'] ?? 'bi bi-code-square') ?>"></i>
               </div>
-              <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;"><?= e($course['title']) ?></h3>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--tc-heading);margin-bottom:4px;"><?= e($course['title']) ?></h3>
               <div style="font-size:0.82rem;color:var(--tc-text-muted);"><?= e($course['duration']) ?> • <?= e($course['level']) ?></div>
             </div>
 
             <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
               <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:8px 0;border-bottom:1px solid var(--tc-border-subtle);">
-                <span style="color:var(--tc-text-muted)">Duration</span>
-                <span style="color:#fff;font-weight:600"><?= e($course['duration']) ?></span>
+                <span style="color:var(--text-muted)">Duration</span>
+                <span style="color:var(--tc-heading);font-weight:600"><?= e($course['duration']) ?></span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:8px 0;border-bottom:1px solid var(--tc-border-subtle);">
-                <span style="color:var(--tc-text-muted)">Difficulty</span>
-                <span style="color:#fff;font-weight:600"><?= e($course['level']) ?></span>
+                <span style="color:var(--text-muted)">Difficulty</span>
+                <span style="color:var(--tc-heading);font-weight:600"><?= e($course['level']) ?></span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:8px 0;border-bottom:1px solid var(--tc-border-subtle);">
-                <span style="color:var(--tc-text-muted)">Certificate</span>
-                <span style="color:var(--tc-secondary);font-weight:600">Yes</span>
+                <span style="color:var(--text-muted)">Certificate</span>
+                <span style="color:var(--primary-orange);font-weight:600">Yes</span>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.85rem;padding:8px 0;">
-                <span style="color:var(--tc-text-muted)">Placement</span>
-                <span style="color:var(--tc-secondary);font-weight:600">Included</span>
+                <span style="color:var(--text-muted)">Placement</span>
+                <span style="color:var(--primary-orange);font-weight:600">Included</span>
               </div>
             </div>
 
@@ -220,5 +220,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
   </div>
 </section>
+
+</div><!-- /.tc-page-light -->
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

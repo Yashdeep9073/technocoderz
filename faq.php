@@ -9,15 +9,19 @@ require_once __DIR__ . '/includes/navbar.php';
 ?>
 <script>window.TC_BASE_URL='<?=SITE_URL?>';</script>
 
-<div class="tc-cta-section" style="padding: 60px 0;">
+<div class="tc-page-light">
+
+<div class="tc-page-hero">
   <div class="container text-center reveal" style="position:relative;z-index:1;">
-    <ul class="tc-breadcrumb" style="list-style:none; padding:0; display:flex; justify-content:center; gap:10px; margin-bottom:15px; font-size:0.9rem;">
-      <li><a href="<?= SITE_URL ?>" style="color:var(--tc-white);"><i class="bi bi-house-fill"></i> Home</a></li>
-      <li style="color:rgba(255,255,255,0.5);">/</li>
-      <li style="color:rgba(255,255,255,0.8);">FAQ</li>
+    <ul class="tc-breadcrumb">
+      <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
+      <li class="sep">/</li>
+      <li class="current">FAQs</li>
     </ul>
-    <h1 class="tc-section-title" style="color:var(--tc-white); margin-bottom:10px;">Frequently Asked <span>Questions</span></h1>
-    <p style="color:rgba(255,255,255,0.8); font-size:1.1rem; max-width:600px; margin:0 auto;">Everything you need to know before joining Techno Coderz.</p>
+    <h1 class="tc-section-title" style="margin-bottom:10px;">Frequently Asked <span>Questions</span></h1>
+    <p style="font-size:1.05rem; max-width:640px; margin:0 auto;">
+      Find answers to common questions about our courses, training process, and career support.
+    </p>
   </div>
 </div>
 
@@ -94,5 +98,7 @@ require_once __DIR__ . '/includes/navbar.php';
     </div>
   </div>
 </section>
+
+</div><!-- /.tc-page-light -->
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

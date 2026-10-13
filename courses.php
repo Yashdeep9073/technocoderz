@@ -15,6 +15,9 @@ $courses = $pdo->query("SELECT * FROM courses WHERE status = 1 ORDER BY sort_ord
 // Pre-fill live search from the homepage / college-search form (?q=...)
 $courseQuery = trim($_GET['q'] ?? '');
 
+// Optional category pre-selection from the homepage category tiles (?cat=<slug>)
+$categoryFilter = slugify(trim($_GET['cat'] ?? ''));
+
 // Category filter tabs (LearnUp style)
 $categoryTabs = [
     ''                     => 'All Courses',
@@ -73,7 +76,7 @@ require_once __DIR__ . '/includes/navbar.php';
 <script>window.TC_BASE_URL = '<?= SITE_URL ?>';</script>
 <script>document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('enquiryCsrf');if(c)c.value='<?=e($csrf)?>';});</script>
 
-<div class="tc-page-light">
+<div class="tc-page-light tc-courses-page">
 
 <!-- Page Hero -->
 <div class="tc-page-hero">
@@ -103,24 +106,64 @@ require_once __DIR__ . '/includes/navbar.php';
 
     <?php if ($courses): ?>
 
+    <div class="row g-5">
+
+      <!-- Sidebar (DreamsLMS course-grid filters) -->
+      <div class="col-lg-3 reveal">
+        <div class="tc-course-sidebar">
+          <div class="tc-side-panel">
+            <h3><i class="bi bi-grid-fill"></i> Categories</h3>
+            <ul class="tc-side-list">
+              <?php foreach ($categoryTabs as $slug => $label): ?>
+              <li>
+                <a href="<?= SITE_URL ?>/courses.php<?= $slug !== '' ? '?cat=' . e($slug) : '' ?>"
+                   class="<?= ($slug === $categoryFilter) ? 'is-active' : '' ?>">
+                  <span><?= e($label) ?></span>
+                  <?php if ($slug !== ''): ?><i class="bi bi-chevron-right"></i><?php endif; ?>
+                </a>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+
+          <div class="tc-side-panel">
+            <h3><i class="bi bi-search"></i> Search Courses</h3>
+            <div class="tc-search-wrap">
+              <i class="bi bi-search"></i>
+              <input type="search" id="courseSearch" class="tc-form-control"
+                     value="<?= e($courseQuery) ?>"
+                     placeholder="Search courses, tech stacks..."
+                     aria-label="Search courses">
+            </div>
+          </div>
+
+          <div class="tc-side-panel">
+            <div class="tc-contact-icon"><i class="bi bi-headset"></i></div>
+            <h3>Need help choosing?</h3>
+            <p style="font-size:.88rem; color:var(--text-muted); line-height:1.7; margin:0 0 16px;">
+              Talk to a course counselor and find the right learning path for your goals.
+            </p>
+            <a href="<?= SITE_URL ?>/contact.php" class="tc-btn tc-btn-cta tc-btn-sm" style="width:100%; justify-content:center;">
+              Contact Admissions
+            </a>
+          </div>
+        </div>
+      </div><!-- /.tc-course-sidebar -->
+
+      <!-- Main column: chips + results -->
+      <div class="col-lg-9">
+
     <!-- Filter + Search (LearnUp style) -->
     <div class="tc-filter-bar reveal">
-      <div class="tc-filter-chips" id="courseChips">
+      <div class="tc-filter-chips" id="courseChips" data-active="<?= e($categoryFilter) ?>">
         <?php foreach ($categoryTabs as $slug => $label): ?>
-        <button type="button" class="tc-btn tc-btn-sm <?= ($slug === '') ? 'active' : '' ?>" data-level="<?= e($slug) ?>">
+        <button type="button" class="tc-btn tc-btn-sm <?= ($slug === $categoryFilter) ? 'active' : '' ?>" data-level="<?= e($slug) ?>">
           <?= e($label) ?>
         </button>
         <?php endforeach; ?>
       </div>
 
-      <div class="tc-search-wrap">
-        <i class="bi bi-search"></i>
-        <input type="search" id="courseSearch" class="tc-form-control"
-               value="<?= e($courseQuery) ?>"
-               placeholder="Search courses, tech stacks, modules..."
-               aria-label="Search courses">
       </div>
-    </div>
 
     <!-- Course Grid (DreamsLMS style) -->
     <div class="row g-4" id="courseGrid">
@@ -219,6 +262,9 @@ require_once __DIR__ . '/includes/navbar.php';
       <p style="margin:0; font-size:1.1rem; color:var(--tc-heading);">No courses match your search.</p>
       <p style="color:var(--tc-text-muted);">Try a different keyword or category.</p>
     </div>
+
+      </div><!-- /.col-lg-9 -->
+    </div><!-- /.row -->
 
     <?php else: ?>
     <div class="text-center py-5" style="background:var(--tc-white); border-radius:var(--tc-radius-lg); border:1px solid var(--tc-border);">

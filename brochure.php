@@ -1,6 +1,10 @@
 <?php
 // ============================================================
 // Techno Coderz — Brochure (curriculum preview + gated PDF)
+// Layout reference: DreamsLMS contact page (contact-us)
+//   breadcrumb banner → 3 info cards → rounded intro + form panel
+//   → catalog → syllabus → highlights → CTA
+// All data + the real PDF lead-capture flow are preserved.
 // ============================================================
 require_once __DIR__ . '/includes/functions.php';
 
@@ -104,273 +108,160 @@ require_once __DIR__ . '/includes/navbar.php';
 <script>window.TC_BASE_URL = '<?= SITE_URL ?>';</script>
 
 <style>
-/* ---- Brochure page (scoped) ---- */
-.bc-hero{
-  position:relative;overflow:hidden;padding:58px 0 52px;
-  background:
-    radial-gradient(900px 380px at 88% -12%, rgba(255,107,0,.13), transparent 62%),
-    radial-gradient(700px 320px at 3% 112%, rgba(8,76,97,.10), transparent 60%),
-    var(--bg-light);
-  border-bottom:1px solid rgba(30,41,59,.08);
-}
-.bc-hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:center;}
-.bc-eyebrow{
-  display:inline-flex;align-items:center;gap:7px;padding:6px 15px;border-radius:999px;
-  background:rgba(255,107,0,.10);border:1px solid rgba(255,107,0,.28);
-  color:var(--primary-orange-hover);font-size:.74rem;font-weight:800;letter-spacing:1.1px;
-  text-transform:uppercase;margin-bottom:16px;
-}
-.bc-hero h1{
-  font-family:'Plus Jakarta Sans',var(--tc-font-main);font-weight:800;color:var(--text-dark);
-  font-size:clamp(1.95rem,3.6vw,3.15rem);line-height:1.12;letter-spacing:-.025em;margin:0 0 14px;
-}
-.bc-hero h1 em{font-style:normal;color:var(--primary-orange);}
-.bc-hero-lead{font-size:1.02rem;line-height:1.75;color:var(--text-muted);max-width:640px;margin:0 0 20px;}
-.bc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none;}
-.bc-chip{
-  display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--text-dark);
-  background:#ffffff;border:1px solid rgba(30,41,59,.10);border-radius:999px;padding:6px 13px;
-  box-shadow:0 2px 8px rgba(30,41,59,.05);
-}
-.bc-chip i{color:var(--primary-orange);}
-.bc-stats{display:flex;flex-wrap:wrap;gap:14px 34px;margin:0 0 26px;padding:0;list-style:none;}
-.bc-stat b{
-  display:block;font-family:var(--tc-font-head);font-size:1.6rem;font-weight:800;color:#084C61;line-height:1.1;
-}
-.bc-stat span{
-  font-size:.7rem;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--text-muted);
-}
-.bc-hero-actions{display:flex;flex-wrap:wrap;gap:12px;}
-.bc-hero-actions .tc-btn-secondary{border-color:rgba(30,41,59,.22);color:var(--text-dark)!important;}
-.bc-hero-actions .tc-btn-secondary:hover{background:rgba(30,41,59,.06);border-color:#084C61;color:#084C61!important;}
+/* ============================================================
+   Brochure page (scoped) — DreamsLMS contact-us layout
+   ============================================================ */
 
-/* PDF preview card */
-.bc-pdf{
-  background:#ffffff;border:1px solid rgba(30,41,59,.10);border-radius:24px;padding:26px;
-  box-shadow:0 22px 48px rgba(30,41,59,.10);position:relative;overflow:hidden;
+/* Rounded intro + form panel (DreamsLMS "bg-light border rounded-4") */
+.bc-panel {
+  background: #F1F4F9;
+  border: 1px solid rgba(30, 41, 59, 0.08);
+  border-radius: 26px;
+  padding: 40px;
+  margin-top: 26px;
 }
-.bc-pdf::before{
-  content:'';position:absolute;inset:0 auto auto 0;width:100%;height:4px;
-  background:linear-gradient(135deg,#FF6B00 0%,#E53835 100%);
+.bc-panel-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.bc-inside-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
+.bc-inside-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.94rem; color: var(--text-body); line-height: 1.55; }
+.bc-inside-list .ic {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 1.05rem;
+  color: var(--primary-orange); background: rgba(255, 107, 0, 0.12);
 }
-.bc-pdf-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-.bc-pdf-icon{
-  width:56px;height:56px;flex-shrink:0;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  font-size:1.7rem;color:#ffffff;background:linear-gradient(135deg,#FF6B00 0%,#E55F00 100%);
-  box-shadow:0 10px 24px rgba(255,107,0,.32);
+
+/* Form card (DreamsLMS card card-body) */
+.bc-form-card {
+  background: #ffffff; border: 1px solid rgba(30, 41, 59, 0.08); border-radius: 22px;
+  padding: 32px; box-shadow: 0 18px 44px rgba(30, 41, 59, 0.08);
 }
-.bc-pdf-top b{display:block;font-family:var(--tc-font-head);color:var(--text-dark);font-size:1rem;line-height:1.35;}
-.bc-pdf-top span{font-size:.78rem;color:var(--text-muted);}
-.bc-pdf-list{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:9px;}
-.bc-pdf-list li{
-  display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--text-body);line-height:1.5;
-}
-.bc-pdf-list li i{color:var(--primary-orange);margin-top:3px;}
-.bc-pdf .tc-btn{width:100%;justify-content:center;}
+.bc-form-card h3 { font-family: var(--tc-font-head); font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin: 0 0 6px; }
+.bc-form-card > p { font-size: 0.94rem; color: var(--text-muted); margin: 0 0 22px; }
+.bc-form-card .tc-btn { width: 100%; justify-content: center; }
+
+/* Info cards (3 across at lg) */
+@media (min-width: 992px) { .tc-brochure-contact { grid-template-columns: repeat(3, 1fr); } }
 
 /* Section heading helper */
-.bc-head{max-width:720px;margin:0 auto 34px;text-align:center;}
-.bc-head .tc-section-title{margin-bottom:12px;}
-.bc-head p{color:var(--text-muted);font-size:1rem;margin:0;}
+.bc-head { max-width: 720px; margin: 0 auto 34px; text-align: center; }
+.bc-head .tc-section-title { margin-bottom: 12px; }
+.bc-head p { color: var(--text-muted); font-size: 1rem; margin: 0; }
 
 /* Catalog overview cards */
-.bc-catalog{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;}
-.bc-cat-card{
-  background:#ffffff;border:1px solid rgba(30,41,59,.09);border-radius:20px;padding:24px;
-  box-shadow:0 8px 26px rgba(30,41,59,.06);display:flex;flex-direction:column;height:100%;
-  transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1), border-color .3s;
+.bc-catalog { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.bc-cat-card {
+  background: #ffffff; border: 1px solid rgba(30, 41, 59, 0.09); border-radius: 20px; padding: 24px;
+  box-shadow: 0 8px 26px rgba(30, 41, 59, 0.06); display: flex; flex-direction: column; height: 100%;
+  transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1), border-color .3s;
 }
-.bc-cat-card:hover{transform:translateY(-5px);border-color:rgba(255,107,0,.35);box-shadow:0 18px 40px rgba(30,41,59,.11);}
-.bc-cat-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
-.bc-cat-num{
-  font-family:var(--tc-font-head);font-size:.78rem;font-weight:800;letter-spacing:1px;color:var(--primary-orange);
-  background:rgba(255,107,0,.10);border:1px solid rgba(255,107,0,.22);border-radius:999px;padding:4px 11px;
+.bc-cat-card:hover { transform: translateY(-5px); border-color: rgba(255, 107, 0, 0.35); box-shadow: 0 18px 40px rgba(30, 41, 59, 0.11); }
+.bc-cat-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.bc-cat-num {
+  font-family: var(--tc-font-head); font-size: .78rem; font-weight: 800; letter-spacing: 1px; color: var(--primary-orange);
+  background: rgba(255, 107, 0, .10); border: 1px solid rgba(255, 107, 0, .22); border-radius: 999px; padding: 4px 11px;
 }
-.bc-cat-level{
-  font-size:.68rem;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:#084C61;
-  background:rgba(8,76,97,.08);border:1px solid rgba(8,76,97,.16);border-radius:999px;padding:4px 10px;
+.bc-cat-level {
+  font-size: .68rem; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; color: #084C61;
+  background: rgba(8, 76, 97, .08); border: 1px solid rgba(8, 76, 97, .16); border-radius: 999px; padding: 4px 10px;
 }
-.bc-cat-card h3{
-  font-family:var(--tc-font-head);font-size:1.06rem;font-weight:700;color:var(--text-dark);
-  line-height:1.4;margin:0 0 10px;
-}
-.bc-cat-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:.76rem;font-weight:700;color:var(--primary-orange);text-transform:uppercase;letter-spacing:.4px;margin-bottom:14px;}
-.bc-cat-modules{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:7px;}
-.bc-cat-modules li{
-  font-size:.83rem;line-height:1.5;color:var(--text-body);display:flex;gap:8px;align-items:flex-start;
-}
-.bc-cat-modules li i{color:var(--primary-orange);font-size:.7rem;margin-top:5px;}
-.bc-cat-actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;}
+.bc-cat-card h3 { font-family: var(--tc-font-head); font-size: 1.06rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; margin: 0 0 10px; }
+.bc-cat-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: .76rem; font-weight: 700; color: var(--primary-orange); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 14px; }
+.bc-cat-modules { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 7px; }
+.bc-cat-modules li { font-size: .83rem; line-height: 1.5; color: var(--text-body); display: flex; gap: 8px; align-items: flex-start; }
+.bc-cat-modules li i { color: var(--primary-orange); font-size: .7rem; margin-top: 5px; }
+.bc-cat-actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* Interactive syllabus accordion */
-.bc-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
-.bc-toolbar-tabs{display:flex;gap:8px;flex-wrap:wrap;}
-.bc-tab{
-  border:1px solid rgba(30,41,59,.14);background:#ffffff;color:var(--text-dark);border-radius:999px;
-  padding:8px 16px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .25s ease;
+.bc-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.bc-toolbar-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.bc-tab {
+  border: 1px solid rgba(30, 41, 59, .14); background: #ffffff; color: var(--text-dark); border-radius: 999px;
+  padding: 8px 16px; font-size: .8rem; font-weight: 700; cursor: pointer; transition: all .25s ease;
 }
-.bc-tab:hover{border-color:var(--primary-orange);color:var(--primary-orange);}
-.bc-tab.is-active{background:var(--primary-orange);border-color:var(--primary-orange);color:#ffffff;box-shadow:0 6px 18px rgba(255,107,0,.28);}
-.bc-expand{display:flex;gap:8px;}
-.bc-expand button{
-  background:transparent;border:1px dashed rgba(30,41,59,.24);color:var(--text-muted);border-radius:999px;
-  padding:7px 14px;font-size:.76rem;font-weight:700;cursor:pointer;transition:all .25s ease;
+.bc-tab:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
+.bc-tab.is-active { background: var(--primary-orange); border-color: var(--primary-orange); color: #ffffff; box-shadow: 0 6px 18px rgba(255, 107, 0, .28); }
+.bc-expand { display: flex; gap: 8px; }
+.bc-expand button {
+  background: transparent; border: 1px dashed rgba(30, 41, 59, .24); color: var(--text-muted); border-radius: 999px;
+  padding: 7px 14px; font-size: .76rem; font-weight: 700; cursor: pointer; transition: all .25s ease;
 }
-.bc-expand button:hover{border-color:var(--primary-orange);color:var(--primary-orange);}
+.bc-expand button:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
 
-.bc-acc{
-  background:#ffffff;border:1px solid rgba(30,41,59,.09);border-radius:20px;margin-bottom:14px;
-  box-shadow:0 6px 20px rgba(30,41,59,.05);overflow:hidden;transition:border-color .3s ease, box-shadow .3s ease;
+.bc-acc {
+  background: #ffffff; border: 1px solid rgba(30, 41, 59, .09); border-radius: 20px; margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(30, 41, 59, .05); overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease;
 }
-.bc-acc.open{border-color:rgba(255,107,0,.34);box-shadow:0 14px 34px rgba(30,41,59,.10);}
-.bc-acc-head{
-  display:flex;align-items:center;gap:16px;width:100%;padding:20px 22px;background:none;border:0;
-  text-align:left;cursor:pointer;
+.bc-acc.open { border-color: rgba(255, 107, 0, .34); box-shadow: 0 14px 34px rgba(30, 41, 59, .10); }
+.bc-acc-head { display: flex; align-items: center; gap: 16px; width: 100%; padding: 20px 22px; background: none; border: 0; text-align: left; cursor: pointer; }
+.bc-acc-head:hover .bc-acc-title { color: var(--primary-orange); }
+.bc-acc-title { font-family: var(--tc-font-head); font-size: 1.02rem; font-weight: 700; color: var(--text-dark); margin: 0 0 6px; transition: color .25s ease; }
+.bc-acc-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: .74rem; font-weight: 700; color: var(--primary-orange); text-transform: uppercase; letter-spacing: .4px; }
+.bc-acc-toggle {
+  margin-left: auto; width: 38px; height: 38px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 107, 0, .10); color: var(--primary-orange); font-size: 1.05rem; transition: transform .3s ease, background .3s ease;
 }
-.bc-acc-head:hover .bc-acc-title{color:var(--primary-orange);}
-.bc-acc-title{font-family:var(--tc-font-head);font-size:1.02rem;font-weight:700;color:var(--text-dark);margin:0 0 6px;transition:color .25s ease;}
-.bc-acc-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:.74rem;font-weight:700;color:var(--primary-orange);text-transform:uppercase;letter-spacing:.4px;}
-.bc-acc-toggle{
-  margin-left:auto;width:38px;height:38px;flex-shrink:0;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,107,0,.10);color:var(--primary-orange);font-size:1.05rem;transition:transform .3s ease, background .3s ease;
-}
-.bc-acc.open .bc-acc-toggle{transform:rotate(180deg);background:var(--primary-orange);color:#ffffff;}
-.bc-acc-body{display:none;padding:0 22px;}
-.bc-acc.open .bc-acc-body{display:block;padding-bottom:22px;}
-.bc-acc-body .tc-module-list{margin-bottom:16px;}
-.bc-acc-skills{display:flex;flex-wrap:wrap;gap:7px;padding-top:14px;border-top:1px dashed rgba(30,41,59,.14);}
-.bc-acc-skills::before{
-  content:'Skills';width:100%;font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;
-  color:var(--text-muted);margin-bottom:2px;
+.bc-acc.open .bc-acc-toggle { transform: rotate(180deg); background: var(--primary-orange); color: #ffffff; }
+.bc-acc-body { display: none; padding: 0 22px; }
+.bc-acc.open .bc-acc-body { display: block; padding-bottom: 22px; }
+.bc-acc-body .tc-module-list { margin-bottom: 16px; }
+.bc-acc-skills { display: flex; flex-wrap: wrap; gap: 7px; padding-top: 14px; border-top: 1px dashed rgba(30, 41, 59, .14); }
+.bc-acc-skills::before {
+  content: 'Skills'; width: 100%; font-size: .68rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 2px;
 }
 
 /* Highlights */
-.bc-hl{display:grid;grid-template-columns:1fr;gap:20px;}
-.bc-hl-card{
-  background:#ffffff;border:1px solid rgba(30,41,59,.09);border-radius:20px;padding:26px;height:100%;
-  box-shadow:0 8px 26px rgba(30,41,59,.06);transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s;
+.bc-hl { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.bc-hl-card {
+  background: #ffffff; border: 1px solid rgba(30, 41, 59, .09); border-radius: 20px; padding: 26px; height: 100%;
+  box-shadow: 0 8px 26px rgba(30, 41, 59, .06); transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s;
 }
-.bc-hl-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(30,41,59,.11);}
-.bc-hl-icon{
-  width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;margin-bottom:16px;color:var(--primary-orange);background:rgba(255,107,0,.10);
-  border:1px solid rgba(255,107,0,.22);
+.bc-hl-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(30, 41, 59, .11); }
+.bc-hl-icon {
+  width: 54px; height: 54px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 16px; color: var(--primary-orange); background: rgba(255, 107, 0, .10);
+  border: 1px solid rgba(255, 107, 0, .22);
 }
-.bc-hl-card h3{font-family:var(--tc-font-head);font-size:1.05rem;font-weight:700;color:var(--text-dark);margin:0 0 8px;}
-.bc-hl-card p{font-size:.88rem;line-height:1.7;color:var(--text-body);margin:0;}
+.bc-hl-card h3 { font-family: var(--tc-font-head); font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin: 0 0 8px; }
+.bc-hl-card p { font-size: .88rem; line-height: 1.7; color: var(--text-body); margin: 0; }
 
-/* Institute details band */
-.bc-info{display:grid;grid-template-columns:1fr;gap:18px;}
-.bc-info-card{
-  display:flex;align-items:flex-start;gap:15px;background:#ffffff;border:1px solid rgba(30,41,59,.09);
-  border-radius:18px;padding:20px;box-shadow:0 6px 20px rgba(30,41,59,.05);
-}
-.bc-info-card h4{font-size:.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px;}
-.bc-info-card p, .bc-info-card a{font-size:.92rem;line-height:1.6;color:var(--text-dark);margin:0;text-decoration:none;overflow-wrap:anywhere;}
-.bc-info-card a:hover{color:var(--primary-orange);}
-.bc-info-card a b{display:block;font-weight:700;}
+.bc-cat-card, .bc-acc-body { overflow-wrap: anywhere; }
 
-/* Download / lead section */
-.bc-download-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start;}
-.bc-hero-grid > *, .bc-catalog > *, .bc-info-card > div, .bc-download-grid > *{min-width:0;}
-.bc-cat-card, .bc-acc-body{overflow-wrap:anywhere;}
-
-@media (min-width: 576px){
-  .bc-catalog{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .bc-hl{grid-template-columns:repeat(2,1fr);}
-  .bc-info{grid-template-columns:repeat(2,1fr);}
+@media (min-width: 576px) {
+  .bc-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bc-hl { grid-template-columns: repeat(2, 1fr); }
 }
-@media (min-width: 768px){
-  .bc-hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);}
-  .bc-info{grid-template-columns:repeat(3,1fr);}
+@media (min-width: 992px) {
+  .bc-catalog { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bc-hl { grid-template-columns: repeat(4, 1fr); }
 }
-@media (min-width: 992px){
-  .bc-catalog{grid-template-columns:repeat(3,minmax(0,1fr));}
-  .bc-hl{grid-template-columns:repeat(4,1fr);}
-  .bc-download-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:32px;}
+@media (max-width: 767.98px) {
+  .bc-panel { padding: 26px 20px; }
+  .bc-form-card { padding: 24px 20px; }
 }
-@media (max-width: 575.98px){
-  .bc-hero{padding:44px 0 40px;}
-  .bc-acc-head{padding:16px 16px;gap:12px;}
-  .bc-acc-body{padding:0 16px;}
-  .bc-acc.open .bc-acc-body{padding-bottom:18px;}
+@media (max-width: 575.98px) {
+  .bc-acc-head { padding: 16px 16px; gap: 12px; }
+  .bc-acc-body { padding: 0 16px; }
+  .bc-acc.open .bc-acc-body { padding-bottom: 18px; }
 }
 </style>
 
 <div class="tc-page-light tc-brochure-page">
 
-<!-- ============ HERO BANNER: catalogue overview + Download PDF CTA ============ -->
-<section class="bc-hero">
-  <div class="container">
-    <div class="bc-hero-grid">
-
-      <div class="reveal">
-        <ul class="tc-breadcrumb" style="justify-content:flex-start;margin-bottom:16px;">
-          <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
-          <li class="sep">/</li>
-          <li class="current">Brochure</li>
-        </ul>
-
-        <span class="bc-eyebrow"><i class="bi bi-collection-fill"></i> Course Catalog <?= date('Y') ?></span>
-
-        <h1>Everything You Learn,<br><em>Before You Enrol.</em></h1>
-
-        <p class="bc-hero-lead">
-          Explore the full <?= e($siteName) ?> catalogue — module-wise syllabus, batch schedule, projects and
-          certification details for every programme — then download the official curriculum PDF.
-        </p>
-
-        <ul class="bc-chips">
-          <?php foreach ($courses as $c): ?>
-          <li class="bc-chip"><i class="bi bi-check-circle-fill"></i> <?= e($c['category'] ?? $c['title']) ?></li>
-          <?php endforeach; ?>
-        </ul>
-
-        <ul class="bc-stats">
-          <li class="bc-stat"><b><?= $totalCourses ?></b><span>Programmes</span></li>
-          <?php if ($totalLessons > 0): ?>
-          <li class="bc-stat"><b><?= $totalLessons ?></b><span>Lessons</span></li>
-          <?php endif; ?>
-          <li class="bc-stat"><b>32</b><span>Live Projects</span></li>
-          <li class="bc-stat"><b>100%</b><span>Career Support</span></li>
-        </ul>
-
-        <div class="bc-hero-actions">
-          <a href="<?= e($heroCtaHref) ?>" class="tc-btn tc-btn-cta tc-btn-lg">
-            <i class="bi bi-download"></i> Download PDF
-          </a>
-          <a href="#syllabus" class="tc-btn tc-btn-secondary tc-btn-lg">
-            <i class="bi bi-journal-text"></i> Browse Syllabus
-          </a>
-        </div>
-      </div>
-
-      <!-- PDF preview card -->
-      <div class="bc-pdf reveal">
-        <div class="bc-pdf-top">
-          <div class="bc-pdf-icon"><i class="bi bi-file-earmark-pdf-fill"></i></div>
-          <div>
-            <b><?= e($brochureMeta['name']) ?></b>
-            <span>PDF &middot; <?= e($brochureMeta['size']) ?> &middot; Updated <?= date('M Y') ?></span>
-          </div>
-        </div>
-        <ul class="bc-pdf-list">
-          <?php foreach ($inside as $item): ?>
-          <li><i class="<?= e($item['icon']) ?>"></i><span><?= e($item['text']) ?></span></li>
-          <?php endforeach; ?>
-        </ul>
-        <a href="<?= e($heroCtaHref) ?>" class="tc-btn tc-btn-cta tc-btn-lg">
-          <i class="bi bi-cloud-arrow-down-fill"></i>
-          <?= $already ? 'Download PDF Again' : 'Get The PDF' ?>
-        </a>
-        <p style="font-size:.76rem;color:var(--text-muted);margin:14px 0 0;text-align:center;">
-          <i class="bi bi-shield-check me-1"></i> Instant download &middot; no spam, ever.
-        </p>
-      </div>
-
-    </div>
+<!-- ============ BANNER (FiStudy / DreamsLMS breadcrumb) ============ -->
+<div class="tc-page-hero">
+  <div class="container text-center reveal">
+    <ul class="tc-breadcrumb">
+      <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
+      <li class="sep">/</li>
+      <li class="current">Brochure</li>
+    </ul>
+    <h1 class="tc-section-title" style="margin-bottom:10px;">Course <span>Brochure</span></h1>
+    <p style="font-size:1.05rem; max-width:660px; margin:0 auto;">
+      Explore the full <?= e($siteName) ?> catalogue — module-wise syllabus, batch schedule, projects and
+      certification details — then download the official curriculum PDF.
+    </p>
   </div>
-</section>
+</div>
 
 <?php if ($status === 'downloaded'): ?>
 <div class="container" style="margin-top:26px;">
@@ -388,6 +279,136 @@ require_once __DIR__ . '/includes/navbar.php';
   </div>
 </div>
 <?php endif; ?>
+
+<!-- ============ INFO CARDS + INTRO/FORM PANEL (DreamsLMS contact-us) ============ -->
+<section class="tc-section">
+  <div class="container">
+
+    <!-- 3 info cards -->
+    <div class="tc-contact-cards tc-brochure-contact reveal">
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+        <div>
+          <h3>Visit Us</h3>
+          <p><?= e($siteAddress) ?></p>
+        </div>
+      </div>
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-telephone-fill"></i></div>
+        <div>
+          <h3>Call Us</h3>
+          <p><a class="tc-link" href="tel:<?= e(preg_replace('/\s+/', '', $sitePhone)) ?>"><?= e($sitePhone) ?></a></p>
+          <p style="font-size:.78rem;">Mon – Sat, 9:00 AM – 7:00 PM</p>
+        </div>
+      </div>
+      <div class="tc-contact-info--top">
+        <div class="tc-contact-icon"><i class="bi bi-envelope-fill"></i></div>
+        <div>
+          <h3>Email Us</h3>
+          <p><a class="tc-link" href="mailto:<?= e($siteEmail) ?>"><?= e($siteEmail) ?></a></p>
+          <p style="font-size:.78rem;">Replies within 24 hours</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rounded panel: intro (left) + lead-capture form (right) -->
+    <div class="bc-panel reveal" id="download">
+      <div class="row g-5 align-items-center">
+
+        <div class="col-lg-6">
+          <span class="tc-badge"><i class="bi bi-collection-fill"></i> Course Catalog <?= date('Y') ?></span>
+          <h2 class="tc-section-title" style="margin:16px 0 14px; font-size:clamp(1.6rem,2.6vw,2.3rem);">
+            Everything You Learn, <span>Before You Enrol.</span>
+          </h2>
+          <p style="color:var(--text-muted); font-size:1rem; line-height:1.75; margin-bottom:22px;">
+            <?= e($siteTagline) ?> Explore our <?= $totalCourses ?> programmes — module-wise syllabus, batch schedule,
+            projects and certification — then download the official curriculum PDF.
+          </p>
+          <ul class="bc-inside-list">
+            <?php foreach ($inside as $item): ?>
+            <li><span class="ic"><i class="<?= e($item['icon']) ?>"></i></span><span><?= e($item['text']) ?></span></li>
+            <?php endforeach; ?>
+          </ul>
+          <div class="bc-panel-actions">
+            <a href="<?= e($heroCtaHref) ?>" class="tc-btn tc-btn-cta tc-btn-lg">
+              <i class="bi bi-download"></i> Download PDF
+            </a>
+            <a href="#syllabus" class="tc-btn tc-btn-secondary tc-btn-lg">
+              <i class="bi bi-journal-text"></i> Browse Syllabus
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="bc-form-card">
+            <h3>Get The Curriculum PDF</h3>
+
+            <?php if ($already): ?>
+              <p>You have already shared your details. Hit the button to download the brochure again — no form needed.</p>
+              <a href="<?= SITE_URL ?>/download-brochure.php" class="tc-btn tc-btn-cta tc-btn-lg">
+                <i class="bi bi-download"></i> Download PDF Again
+              </a>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin:16px 0 0; text-align:center;">
+                <i class="bi bi-lock-fill me-1"></i> This PDF is released after a quick lead capture.
+              </p>
+
+            <?php else: ?>
+              <p>Share your details and the official brochure downloads instantly.</p>
+
+              <?php if ($flash): ?>
+              <div class="mb-3" style="display:block">
+                <div class="alert py-2 px-3 mb-0" style="font-size:0.87rem; border-radius:10px; background:var(--primary-orange-soft); border:1px solid rgba(255,107,0,0.35); color:var(--primary-orange-hover);">
+                  <?= e($flash['text']) ?>
+                </div>
+              </div>
+              <?php endif; ?>
+
+              <form method="post" action="<?= SITE_URL ?>/brochure.php" novalidate>
+                <input type="hidden" name="csrf_token" value="<?= e($csrf) ?>">
+
+                <div class="mb-3">
+                  <label class="tc-form-label">Full Name <span style="color:var(--primary-orange)">*</span></label>
+                  <input type="text" name="name" class="tc-form-control" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="mb-3">
+                  <label class="tc-form-label">Email Address <span style="color:var(--primary-orange)">*</span></label>
+                  <input type="email" name="email" class="tc-form-control" placeholder="you@example.com" required>
+                </div>
+
+                <div class="mb-3">
+                  <label class="tc-form-label">Phone Number <span style="color:var(--primary-orange)">*</span></label>
+                  <input type="tel" name="phone" class="tc-form-control" placeholder="+91 98765 43210" required>
+                </div>
+
+                <div class="mb-4">
+                  <label class="tc-form-label">Course Interested In <span style="color:var(--primary-orange)">*</span></label>
+                  <select name="course" class="tc-form-control" required>
+                    <option value="">-- Select a Course --</option>
+                    <?php foreach ($courses as $c): ?>
+                    <option value="<?= e($c['title']) ?>"><?= e($c['title']) ?></option>
+                    <?php endforeach; ?>
+                    <option value="Other / Not Sure">Other / Not Sure</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="tc-btn tc-btn-cta tc-btn-lg">
+                  <i class="bi bi-download"></i> Download Brochure (PDF)
+                </button>
+
+                <p style="font-size:0.78rem; color:var(--text-muted); margin:16px 0 0; text-align:center;">
+                  <i class="bi bi-shield-check me-1"></i> No spam — only course details and your download link.
+                </p>
+              </form>
+            <?php endif; ?>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ============ COURSE CATALOG OVERVIEW ============ -->
 <section class="tc-section" id="catalog">
@@ -532,160 +553,6 @@ require_once __DIR__ . '/includes/navbar.php';
         <p><?= e($h['text']) ?></p>
       </div>
       <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INSTITUTE DETAILS / CONTACT ============ -->
-<section class="tc-section" id="institute" style="background:#ffffff;border-top:1px solid rgba(30,41,59,.07);">
-  <div class="container">
-    <div class="bc-head reveal">
-      <span class="tc-badge"><i class="bi bi-building-fill"></i> The Institute</span>
-      <h2 class="tc-section-title" style="font-size:clamp(1.6rem,2.6vw,2.3rem);">About <span><?= e($siteName) ?></span></h2>
-      <p><?= e($siteTagline) ?></p>
-    </div>
-
-    <div class="bc-info">
-      <div class="bc-info-card reveal">
-        <div class="tc-contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
-        <div>
-          <h4>Visit Us</h4>
-          <p><?= e($siteAddress) ?></p>
-        </div>
-      </div>
-      <div class="bc-info-card reveal" style="transition-delay:.07s;">
-        <div class="tc-contact-icon"><i class="bi bi-telephone-fill"></i></div>
-        <div>
-          <h4>Call Us</h4>
-          <a href="tel:<?= e(preg_replace('/\s+/', '', $sitePhone)) ?>"><b><?= e($sitePhone) ?></b></a>
-          <p style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Mon – Sat, 9:00 AM – 7:00 PM</p>
-        </div>
-      </div>
-      <div class="bc-info-card reveal" style="transition-delay:.14s;">
-        <div class="tc-contact-icon"><i class="bi bi-envelope-fill"></i></div>
-        <div>
-          <h4>Email Us</h4>
-          <a href="mailto:<?= e($siteEmail) ?>"><b><?= e($siteEmail) ?></b></a>
-          <p style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Replies within 24 hours</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DOWNLOAD + LEAD CAPTURE ============ -->
-<section class="tc-section" id="download" style="background:#f8fafc;border-top:1px solid rgba(30,41,59,.07);">
-  <div class="container">
-    <div class="bc-download-grid">
-
-      <!-- What's inside -->
-      <div class="reveal">
-        <span class="tc-badge"><i class="bi bi-collection-fill"></i> What's Inside</span>
-        <h2 class="tc-section-title" style="font-size:clamp(1.6rem,2.6vw,2.3rem);">Everything You Need To <span>Decide</span></h2>
-        <p style="color:var(--text-muted);font-size:1rem;line-height:1.75;margin-bottom:26px;">
-          The curriculum PDF is the same document our counsellors walk you through — no gated fluff.
-        </p>
-
-        <div class="bc-hl" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-          <?php foreach ($inside as $item): ?>
-          <div class="bc-info-card">
-            <div class="tc-contact-icon" style="width:44px;height:44px;font-size:1.1rem;border-radius:12px;"><i class="<?= e($item['icon']) ?>"></i></div>
-            <div><p style="font-weight:600;color:var(--text-dark);font-size:.9rem;"><?= e($item['text']) ?></p></div>
-          </div>
-          <?php endforeach; ?>
-        </div>
-
-        <div class="tc-form-panel" style="margin-top:24px;">
-          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
-            <div class="tc-contact-icon"><i class="bi bi-chat-dots-fill"></i></div>
-            <div style="flex:1 1 220px;">
-              <h3 style="font-size:1.05rem;margin-bottom:4px;">Want a walkthrough instead?</h3>
-              <p style="font-size:.9rem;color:var(--text-muted);margin:0;">Speak with a course counsellor — modules, batches and fees, explained plainly.</p>
-            </div>
-            <a href="<?= SITE_URL ?>/contact.php" class="tc-btn tc-btn-cta">
-              <i class="bi bi-telephone-fill"></i> Talk To Us
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lead capture + download -->
-      <div class="reveal">
-        <div class="tc-download-panel">
-
-          <div class="tc-doc-preview">
-            <i class="bi bi-file-earmark-pdf-fill"></i>
-            <div>
-              <b><?= e($brochureMeta['name']) ?></b>
-              <span>PDF &middot; <?= e($brochureMeta['size']) ?> &middot; Updated <?= date('M Y') ?></span>
-            </div>
-          </div>
-
-          <?php if ($already): ?>
-            <h3>Your brochure is ready</h3>
-            <p>You have already shared your details. Hit the button to download it again — no form needed.</p>
-            <a href="<?= SITE_URL ?>/download-brochure.php" class="tc-btn tc-btn-cta tc-btn-lg" style="width:100%; justify-content:center;">
-              <i class="bi bi-download"></i> Download PDF Again
-            </a>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin:16px 0 0;">
-              <i class="bi bi-lock-fill me-1"></i> This PDF is released after a quick lead capture.
-            </p>
-
-          <?php else: ?>
-
-            <h3>Get The Curriculum PDF</h3>
-            <p>Share your details and the official brochure downloads instantly.</p>
-
-            <?php if ($flash): ?>
-            <div class="mb-3" style="display:block">
-              <div class="alert py-2 px-3 mb-0" style="font-size:0.87rem; border-radius:10px; background:var(--primary-orange-soft); border:1px solid rgba(255,107,0,0.35); color:var(--primary-orange-hover);">
-                <?= e($flash['text']) ?>
-              </div>
-            </div>
-            <?php endif; ?>
-
-            <form method="post" action="<?= SITE_URL ?>/brochure.php" novalidate>
-              <input type="hidden" name="csrf_token" value="<?= e($csrf) ?>">
-
-              <div class="mb-3">
-                <label class="tc-form-label">Full Name <span style="color:var(--primary-orange)">*</span></label>
-                <input type="text" name="name" class="tc-form-control" placeholder="e.g. Rahul Sharma" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="tc-form-label">Email Address <span style="color:var(--primary-orange)">*</span></label>
-                <input type="email" name="email" class="tc-form-control" placeholder="you@example.com" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="tc-form-label">Phone Number <span style="color:var(--primary-orange)">*</span></label>
-                <input type="tel" name="phone" class="tc-form-control" placeholder="+91 98765 43210" required>
-              </div>
-
-              <div class="mb-4">
-                <label class="tc-form-label">Course Interested In <span style="color:var(--primary-orange)">*</span></label>
-                <select name="course" class="tc-form-control" required>
-                  <option value="">-- Select a Course --</option>
-                  <?php foreach ($courses as $c): ?>
-                  <option value="<?= e($c['title']) ?>"><?= e($c['title']) ?></option>
-                  <?php endforeach; ?>
-                  <option value="Other / Not Sure">Other / Not Sure</option>
-                </select>
-              </div>
-
-              <button type="submit" class="tc-btn tc-btn-cta tc-btn-lg" style="width:100%; justify-content:center;">
-                <i class="bi bi-download"></i> Download Brochure (PDF)
-              </button>
-
-              <p style="font-size:0.78rem; color:var(--text-muted); margin:16px 0 0;">
-                <i class="bi bi-shield-check me-1"></i> No spam — only course details and your download link.
-              </p>
-            </form>
-
-          <?php endif; ?>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
