@@ -20,17 +20,24 @@ require_once __DIR__ . '/includes/navbar.php';
 
 <div class="tc-page-light tc-blog-page">
 
-<div class="tc-page-hero">
-  <div class="container text-center reveal" style="position:relative;z-index:1;">
+<header class="tcs-hero">
+  <div class="container">
     <ul class="tc-breadcrumb">
       <li><a href="<?= SITE_URL ?>"><i class="bi bi-house-fill"></i> Home</a></li>
       <li class="sep">/</li>
       <li class="current">Our Blogs</li>
     </ul>
-    <h1 class="tc-section-title" style="margin-bottom:10px;">Our <span>Blogs</span></h1>
-    <p style="font-size:1.05rem; max-width:640px; margin:0 auto;">Tutorials, industry insights, career guidance, and technology deep-dives from our expert instructors.</p>
+    <span class="tcs-eyebrow">Insights &amp; Tutorials</span>
+    <h1>Our <span>Blogs</span></h1>
+    <p class="tcs-lead">Tutorials, industry insights, career guidance, and technology deep-dives from our expert instructors.</p>
+    <div class="tcs-stats">
+      <span class="tcs-stat"><i class="bi bi-journal-text"></i> <?=count($blogs)?> Articles</span>
+      <span class="tcs-stat"><i class="bi bi-tags-fill"></i> <?=count($blogCategories)?> Topics</span>
+      <span class="tcs-stat"><i class="bi bi-person-badge-fill"></i> Expert Authors</span>
+      <span class="tcs-stat"><i class="bi bi-clock-history"></i> Fresh Weekly</span>
+    </div>
   </div>
-</div>
+</header>
 
 <section class="tc-section">
   <div class="container">
@@ -121,6 +128,33 @@ require_once __DIR__ . '/includes/navbar.php';
       <small>Check back shortly!</small>
     </div>
     <?php endif;?>
+  </div>
+</section>
+
+<!-- ===== Where to go next ===== -->
+<section class="tc-section tcs-alt">
+  <div class="container">
+    <div class="tcs-head tcs-head--center">
+      <span class="tcs-eyebrow">Keep Exploring</span>
+      <h2>Where to Go <span>Next</span></h2>
+    </div>
+    <div class="tcs-next">
+      <a class="tcs-next__card reveal" href="<?= SITE_URL ?>/courses.php">
+        <h3>Explore Courses</h3>
+        <p>Job-oriented training in PHP, Java, Full Stack, Data and more — each track closed with a live project.</p>
+        <span class="tcs-next__link">Browse courses <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a class="tcs-next__card reveal" href="<?= SITE_URL ?>/projects.php" style="transition-delay:.08s">
+        <h3>See Our Projects</h3>
+        <p>A portfolio of real applications and systems built by our team and students.</p>
+        <span class="tcs-next__link">View portfolio <i class="bi bi-arrow-right"></i></span>
+      </a>
+      <a class="tcs-next__card reveal" href="<?= SITE_URL ?>/contact.php" style="transition-delay:.16s">
+        <h3>Talk to Our Team</h3>
+        <p>Questions about a course or your career path? We're happy to help.</p>
+        <span class="tcs-next__link">Get in touch <i class="bi bi-arrow-right"></i></span>
+      </a>
+    </div>
   </div>
 </section>
 

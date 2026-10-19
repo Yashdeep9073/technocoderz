@@ -203,7 +203,7 @@ require_once __DIR__ . '/includes/navbar.php';
                 <span><i class="bi bi-patch-check"></i> Certificate</span> 
               </div> 
               <div class="tc-course-actions"> 
-                <a href="<?= SITE_URL ?>/course-details.php?slug=<?= urlencode($course['slug']) ?>" class="tc-btn tc-btn-secondary tc-btn-sm" style="justify-content:center"> 
+                <a href="<?= e(coursePageUrl($course['slug'])) ?>" class="tc-btn tc-btn-secondary tc-btn-sm" style="justify-content:center"> 
                   <i class="bi bi-eye"></i> Details 
                 </a> 
                 <button onclick="openEnquiry('<?= e($course['title']) ?>')" class="tc-btn tc-btn-primary tc-btn-sm" style="justify-content:center"> 

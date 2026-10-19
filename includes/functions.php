@@ -155,6 +155,28 @@ function courseImage(string|null $image): string {
     return SITE_URL . '/assets/images/default-course.svg';
 }
 
+/**
+ * Public URL for a course's dedicated page.
+ * Each active course has its own SEO-friendly page (like techcadd.com),
+ * falling back to the dynamic course-details.php?slug= route.
+ */
+function coursePageUrl(string $slug): string {
+    static $pages = [
+        'artificial-intelligence-machine-learning-data-science' => 'best-artificial-intelligence-course-in-mohali.php',
+        'full-stack-development-mern-mean-stack'               => 'best-full-stack-development-course-in-mohali.php',
+        'devsecops-cyber-security'                             => 'best-devsecops-cyber-security-course-in-mohali.php',
+        'devops-ci-cd'                                         => 'best-devops-cicd-course-in-mohali.php',
+    ];
+    if (isset($pages[$slug])) {
+        return SITE_URL . '/' . $pages[$slug];
+    }
+    $file = $slug . '.php';
+    if (is_file(dirname(__DIR__) . '/' . $file)) {
+        return SITE_URL . '/' . $file;
+    }
+    return SITE_URL . '/course-details.php?slug=' . urlencode($slug);
+}
+
 function blogImage(string|null $image): string {
     if ($image && file_exists(UPLOAD_DIR . 'blogs/' . $image)) {
         return UPLOAD_URL . 'blogs/' . $image;

@@ -1,0 +1,133 @@
+/* ============================================================
+   Techno Coderz — homepage (techcadd-style layout, orange theme)
+   Component classes + animations used by index.php.
+   Tailwind utilities are provided by the Tailwind CDN config.
+   ============================================================ */
+
+/* ---- Layout ---- */
+.container-x { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 1024px) { .container-x { padding-inline: 2rem; } }
+
+/* ---- Decorative ---- */
+.glow-blob { position: absolute; pointer-events: none; border-radius: 9999px; filter: blur(80px); }
+
+.grid-lines {
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(80% 60% at 50% 40%, #000 40%, transparent 100%);
+          mask-image: radial-gradient(80% 60% at 50% 40%, #000 40%, transparent 100%);
+}
+.grid-lines-light {
+  background-image:
+    linear-gradient(90deg, rgba(15,23,42,.05) 1px, transparent 1px),
+    linear-gradient(rgba(15,23,42,.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(70% 60%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(70% 60%, #000 30%, transparent 100%);
+}
+.dot-grid {
+  background-image: radial-gradient(rgba(15,23,42,.22) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+/* ---- Glass ---- */
+.glass {
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+          backdrop-filter: blur(24px) saturate(1.5);
+  background: rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: inset 0 1px rgba(255,255,255,.95), inset 0 -1px rgba(255,255,255,.4), 0 28px 60px -28px rgba(15,23,42,.4);
+}
+.glass-dark {
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+          backdrop-filter: blur(24px) saturate(1.4);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: inset 0 1px rgba(255,255,255,.18), inset 0 -1px rgba(255,255,255,.05), 0 28px 60px -28px rgba(0,0,0,.8);
+}
+.glass-sheen { overflow: hidden; }
+.glass-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 66%;
+  background: linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.22), transparent);
+  pointer-events: none;
+}
+
+/* ---- Hover / fills ---- */
+.card-hover { transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s cubic-bezier(.16,1,.3,1), border-color .3s; }
+
+.accent-fill { background-color: #ffc23d; color: #0b1220; box-shadow: 0 18px 40px -18px rgba(255,194,61,.6); }
+.accent-fill:hover { background-color: #ffcf5c; }
+
+.brand-fill { background-color: #ff6b00; color: #fff; box-shadow: 0 18px 40px -18px rgba(255,107,0,.65); }
+.brand-fill:hover { background-color: #ff7a1a; }
+
+/* ---- Animations ---- */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes pulse-glow { 0%, 100% { opacity: .35; transform: scale(1); } 50% { opacity: .7; transform: scale(1.08); } }
+@keyframes circuit-pulse { 0% { stroke-dashoffset: 1; } 100% { stroke-dashoffset: 0; } }
+@keyframes orbit-glow { 0%, 100% { opacity: .28; } 50% { opacity: .8; } }
+@keyframes process-run { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+.circuit-pulse { stroke-dasharray: .08 1; will-change: stroke-dashoffset; animation: circuit-pulse 3.4s linear infinite; }
+.orbit-arc { animation: orbit-glow 4s ease-in-out infinite; }
+
+.process-connector {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #ff6b00, #ffc23d, #ff8a3d);
+  background-size: 200% 100%;
+  animation: process-run 8s linear infinite;
+}
+
+/* ---- Stack filter buttons ---- */
+.stack-btn { border-color: rgba(255,255,255,.15); color: rgba(255,217,191,.8); }
+.stack-btn:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+.stack-btn.is-active { background: #fff; border-color: #fff; color: #0b1220; }
+
+/* ---- Capabilities rail ---- */
+.cap-rail-btn { position: relative; display: block; width: 100%; overflow: hidden; border-radius: 1rem; padding: 1rem 1.25rem; text-align: left; transition: all .3s; }
+.cap-rail-btn:not(.is-active):hover { background: rgba(255,255,255,.7); }
+.cap-rail-btn.is-active { background-image: linear-gradient(to right, #c2410c, #ff6b00); box-shadow: 0 18px 40px -20px rgba(255,107,0,.85); }
+.cap-rail-btn .cap-rail-num { color: rgba(71,85,105,.45); transition: color .3s; }
+.cap-rail-btn.is-active .cap-rail-num { color: rgba(255,255,255,.6); }
+.cap-rail-btn .cap-rail-title { color: rgba(15,23,42,.6); transition: color .3s; }
+.cap-rail-btn.is-active .cap-rail-title { color: #fff; }
+.cap-rail-btn:not(.is-active):hover .cap-rail-title { color: #0f172a; }
+.cap-rail-btn .cap-rail-arrow { opacity: 0; transform: translateX(-.5rem); transition: all .3s; color: #ff6b00; }
+.cap-rail-btn.is-active .cap-rail-arrow { opacity: 1; transform: none; color: #fff; }
+.cap-rail-btn:not(.is-active):hover .cap-rail-arrow { opacity: .6; transform: none; }
+
+/* ---- FAQ accordion ---- */
+.tcm-faq .tcm-faq-body { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .4s ease, opacity .4s ease; }
+.tcm-faq .tcm-faq-body > div { overflow: hidden; }
+.tcm-faq.open .tcm-faq-body { grid-template-rows: 1fr; opacity: 1; }
+.tcm-faq .tcm-faq-icon { transition: all .3s; }
+.tcm-faq.open .tcm-faq-icon { transform: rotate(45deg); background: #ff8a3d; color: #0b1220; }
+.tcm-faq.open .tcm-faq-q { color: #ff8a3d; }
+
+/* ---- Reviews marquee ---- */
+.tcm-track { display: flex; width: max-content; animation: marquee 60s linear infinite; }
+.tcm-marquee:hover .tcm-track { animation-play-state: paused; }
+
+/* ---- Reveal on scroll (techcadd-style: only hide once JS arms the page) ---- */
+html.anim-armed [data-anim] { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+html.anim-armed [data-anim="fade"] { transform: none; }
+html.anim-armed [data-anim="words"] { transform: translateY(14px); }
+html.anim-armed [data-anim="right"] { transform: translateX(34px); }
+html.anim-armed [data-anim].is-in { opacity: 1; transform: none; }
+html.anim-armed [data-underline] { transform: scaleX(0); transform-origin: left; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+html.anim-armed [data-underline].is-in { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-anim], [data-underline] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .tcm-track, .animate-pulse-glow, .animate-float, .circuit-pulse, .orbit-arc, .process-connector { animation: none !important; }
+}

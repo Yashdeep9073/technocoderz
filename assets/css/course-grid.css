@@ -1,0 +1,442 @@
+/* ============================================================
+   Techno Coderz — Courses page (DreamsLMS course-grid layout)
+   Scoped under .tc-lms-page so the shared site template is
+   never affected. Colours remapped to the Techno Coderz brand.
+   ============================================================ */
+
+/* ---- DreamsLMS design tokens (scoped) ---- */
+.tc-lms-page {
+  --white: #fff;
+  --dark: #000;
+  --black: #000;
+  --light: #F8F8F8;
+
+  --primary: #1E293B;
+  --primary-hover: #0F172A;
+  --secondary: #FF6B00;
+  --secondary-hover: #E55F00;
+
+  --primary-transparent: #EBE9F1;
+  --primary-100: #D6D4E4;
+
+  --gray-100: #E7E7E7;
+  --gray-200: #D1D1D1;
+  --gray-300: #B0B0B0;
+  --gray-400: #888888;
+  --gray-500: #6D6D6D;
+  --gray-600: #5D5D5D;
+  --gray-700: #4F4F4F;
+  --gray-800: #3D3D3D;
+  --gray-900: #1E293B;
+  --grey-10: #6c757d;
+  --grey-20: #5D636F;
+
+  --light-100: #FEFEFE;
+  --light-200: #FCFCFD;
+  --light-300: #FBFBFD;
+  --light-400: #F9FAFC;
+  --light-500: #F8FAFB;
+  --light-600: #F7F9FB;
+  --light-700: #F6F8FA;
+  --light-800: #F5F7FA;
+  --light-900: #F4F6F9;
+
+  --white-20: #ffffff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: var(--gray-600);
+  line-height: 1.5;
+  background-color: #fff;
+}
+@media (max-width: 767.98px) {
+  .tc-lms-page { font-size: 14px; }
+}
+
+/* ---- Scoped base ---- */
+.tc-lms-page p { margin-bottom: 20px; }
+.tc-lms-page p:last-child { margin-bottom: 0; }
+.tc-lms-page h1, .tc-lms-page .h1,
+.tc-lms-page h2, .tc-lms-page .h2,
+.tc-lms-page h3, .tc-lms-page .h3,
+.tc-lms-page h4, .tc-lms-page .h4,
+.tc-lms-page h5, .tc-lms-page .h5,
+.tc-lms-page h6, .tc-lms-page .h6 {
+  color: var(--gray-900);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.tc-lms-page ol, .tc-lms-page ul { list-style: none; margin-block-end: 0; padding: 0; }
+.tc-lms-page img { max-width: 100%; height: auto; vertical-align: middle; }
+.tc-lms-page .bg-light { background-color: var(--light) !important; }
+.tc-lms-page .text-secondary { color: var(--gray-500) !important; }
+.tc-lms-page .link-default { color: var(--gray-500); }
+.tc-lms-page .link-default:hover { color: var(--secondary); }
+
+/* ---- Buttons (template overrides) ---- */
+.tc-lms-page .btn {
+  border-radius: 1.5rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.5s;
+}
+.tc-lms-page .btn:focus { box-shadow: none !important; }
+.tc-lms-page .btn.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+.tc-lms-page .btn.btn-lg { padding: 0.53rem 1rem; font-size: 14px; }
+.tc-lms-page .btn.btn-dark {
+  background: var(--gray-900) !important;
+  border-color: var(--gray-900) !important;
+  box-shadow: none;
+  color: var(--white);
+}
+.tc-lms-page .btn.btn-dark:hover { background: #252a30 !important; color: var(--white); }
+.tc-lms-page .btn.btn-light {
+  background-color: var(--light);
+  border: 1px solid var(--light);
+  color: var(--gray-900);
+}
+.tc-lms-page .btn.btn-light:hover { background-color: #A8AAB2; border-color: #A8AAB2; color: var(--gray-900); }
+
+/* ---- Badges & avatar ---- */
+.tc-lms-page .badge.badge-light { color: var(--gray-900) !important; }
+.tc-lms-page .avatar {
+  position: relative;
+  height: 2.625rem;
+  width: 2.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--white);
+  font-weight: 500;
+}
+.tc-lms-page .avatar img { width: 100%; height: 100%; border-radius: 4px; }
+.tc-lms-page .avatar.avatar-sm { height: 2rem; width: 2rem; }
+
+/* ---- Form controls ---- */
+.tc-lms-page .form-select {
+  background-color: var(--white);
+  border: 1px solid var(--gray-100);
+  color: var(--gray-500);
+  font-size: 14px;
+  line-height: 2;
+}
+.tc-lms-page .form-select:focus { box-shadow: none; border-color: var(--secondary); }
+
+/* ============================================================
+   Breadcrumb
+   ============================================================ */
+.tc-lms-page .breadcrumb-bar {
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, #FFF1E6 0%, #FFE9D6 51.39%, #FFF3EA 100%);
+}
+.tc-lms-page .breadcrumb-bar .breadcrumb-title { font-size: 36px; color: var(--gray-900); }
+@media (max-width: 991.98px) { .tc-lms-page .breadcrumb-bar .breadcrumb-title { font-size: 26px; } }
+@media (max-width: 767.98px) { .tc-lms-page .breadcrumb-bar .breadcrumb-title { font-size: 22px; } }
+
+.tc-lms-page .breadcrumb { margin-bottom: 0; }
+.tc-lms-page .breadcrumb .breadcrumb-item {
+  color: var(--gray-900);
+  position: relative;
+  font-size: 14px;
+}
+.tc-lms-page .breadcrumb .breadcrumb-item a { color: var(--gray-900); }
+.tc-lms-page .breadcrumb .breadcrumb-item a:hover { color: var(--secondary); }
+.tc-lms-page .breadcrumb .breadcrumb-item + .breadcrumb-item { margin-left: 26px; }
+.tc-lms-page .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "";
+  width: 15px;
+  height: 1px;
+  background: var(--gray-300);
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ============================================================
+   Course content + left filter sidebar
+   ============================================================ */
+.tc-lms-page .course-content { padding: 60px 0; }
+.tc-lms-page .course-content .form-select {
+  width: auto;
+  box-shadow: none;
+  outline: none;
+  margin-right: 10px;
+  font-size: 14px;
+  height: 40px;
+  color: var(--gray-900);
+}
+@media (max-width: 575.98px) {
+  .tc-lms-page .course-content .form-select { width: 100%; margin-right: 0; margin-bottom: 10px; }
+}
+.tc-lms-page .course-content .clear-text {
+  color: var(--secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.tc-lms-page .course-content .clear-text:hover { color: var(--primary); }
+
+.tc-lms-page .theiaStickySidebar > .filter-clear { position: sticky; top: 100px; }
+@media (max-width: 991.98px) {
+  .tc-lms-page .theiaStickySidebar > .filter-clear { position: static; }
+  .tc-lms-page .course-content .show-result { margin: 20px 0; }
+}
+
+.tc-lms-page .course-content .view-icons { display: inline-flex; }
+.tc-lms-page .course-content .view-icons a {
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: 10px;
+  color: var(--black);
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  text-align: center;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.tc-lms-page .course-content .view-icons a.active {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--white);
+}
+.tc-lms-page .course-content .show-filter .search-group { position: relative; }
+.tc-lms-page .course-content .show-filter .search-group i {
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-size: 14px;
+  color: var(--gray-400);
+}
+.tc-lms-page .course-content .show-filter .search-group .form-control {
+  border: 1px solid var(--gray-100);
+  color: var(--gray-500);
+  outline: none;
+  box-shadow: none;
+  padding: 6px 10px 6px 35px;
+  min-height: 40px;
+  border-radius: 5px;
+}
+.tc-lms-page .course-content .show-filter .search-group .form-control:focus { border-color: var(--secondary); }
+
+.tc-lms-page .showing-list .show-result h6 { color: var(--gray-900); }
+
+/* ---- Accordion filters ---- */
+.tc-lms-page .filter-clear .clear-filter h5 { color: var(--gray-900); }
+.tc-lms-page .filter-clear .accordion-item {
+  border-radius: 10px;
+  border: 1px solid var(--gray-100);
+  margin-bottom: 20px;
+  background: var(--white);
+  overflow: hidden;
+}
+.tc-lms-page .filter-clear .accordion-item:last-child { margin-bottom: 0; }
+.tc-lms-page .filter-clear .accordion-item .see-more-btn {
+  margin: 10px 0 0;
+  color: var(--secondary);
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 14px;
+}
+.tc-lms-page .filter-clear .accordion-item .accordion-button {
+  border: none;
+  background-color: transparent;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray-900);
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 1399.98px) {
+  .tc-lms-page .filter-clear .accordion-item .accordion-button { padding: 15px; }
+}
+.tc-lms-page .filter-clear .accordion-item .accordion-button::after {
+  font-size: 13px;
+  font-weight: 500;
+  display: none;
+}
+.tc-lms-page .filter-clear .accordion-item .accordion-button.collapsed i { transform: rotate(0deg); }
+.tc-lms-page .filter-clear .accordion-item .accordion-button i {
+  font-size: 12px;
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease;
+}
+.tc-lms-page .filter-clear .accordion-item .accordion-body { border: none; padding: 0 20px 20px; }
+
+/* ---- Custom checkbox ---- */
+.tc-lms-page .filter-clear .custom_check input { position: absolute; opacity: 0; cursor: pointer; }
+.tc-lms-page .filter-clear .custom_check {
+  color: var(--gray-500) !important;
+  display: inline-block;
+  position: relative;
+  font-size: 14px !important;
+  margin-bottom: 15px;
+  padding-left: 28px;
+  cursor: pointer;
+  font-weight: 400 !important;
+  user-select: none;
+  line-height: 18px;
+}
+.tc-lms-page .filter-clear .custom_check .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid var(--gray-200);
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+.tc-lms-page .filter-clear .custom_check .checkmark::after {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  display: none;
+  left: 2px;
+  top: -1px;
+  color: var(--white);
+  font-size: 10px;
+}
+.tc-lms-page .filter-clear .custom_check input:checked ~ .checkmark::after { display: block; }
+.tc-lms-page .filter-clear .custom_check input:checked ~ .checkmark {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+/* ============================================================
+   Course cards (course-item / course-item-two)
+   ============================================================ */
+.tc-lms-page .course-item {
+  padding: 20px;
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 4px 4px 0 rgba(212, 212, 212, 0.2);
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  background: var(--white);
+}
+.tc-lms-page .course-item:hover { border-color: var(--secondary); }
+.tc-lms-page .course-item .course-img { margin-bottom: 24px; position: relative; }
+.tc-lms-page .course-item .course-img img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.tc-lms-page .course-item .badge { margin-bottom: 10px; font-weight: 500; }
+.tc-lms-page .course-item .fav-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.tc-lms-page .course-item .fav-icon:hover,
+.tc-lms-page .course-item .fav-icon.selected { color: var(--secondary); }
+.tc-lms-page .course-item .fav-icon.selected i { font-weight: 900; }
+.tc-lms-page .course-item h5,
+.tc-lms-page .course-item .custom-subtitle {
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tc-lms-page .course-item .course-content { padding: 0; }
+
+.tc-lms-page .course-item.course-item-two {
+  background: var(--white);
+  margin-bottom: 24px;
+  height: 100%;
+}
+.tc-lms-page .course-item.course-item-two .course-img {
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 200px;
+}
+.tc-lms-page .course-item.course-item-two .course-img img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.6s ease;
+}
+.tc-lms-page .course-item.course-item-two .course-img img{ transition: transform 0.6s ease; }
+.tc-lms-page .course-item.course-item-two:hover .course-img img{ transform: scale(1.06); }
+.tc-lms-page .course-item.course-item-two .course-content .title {
+  font-size: 18px;
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tc-lms-page .course-item.course-item-two .course-content .title a { color: var(--gray-900); }
+.tc-lms-page .course-item.course-item-two .course-content .title a:hover { color: var(--secondary); }
+@media (max-width: 991.98px) {
+  .tc-lms-page .course-item.course-item-two .course-content .title { font-size: 16px; }
+}
+.tc-lms-page .course-item.course-item-two .course-content p { font-size: 14px; }
+.tc-lms-page .course-meta-line { color: var(--gray-500); }
+.tc-lms-page .course-meta-line i { font-size: 13px; }
+
+/* List view */
+.tc-lms-page .course-grid.is-list .course-item-wrap { width: 100%; }
+.tc-lms-page .course-grid.is-list .course-item-two { display: flex; align-items: stretch; }
+.tc-lms-page .course-grid.is-list .course-item-two .course-img { width: 300px; flex-shrink: 0; margin-bottom: 0; margin-right: 20px; }
+.tc-lms-page .course-grid.is-list .course-item-two .course-content { flex: 1; }
+@media (max-width: 767.98px) {
+  .tc-lms-page .course-grid.is-list .course-item-two { display: block; }
+  .tc-lms-page .course-grid.is-list .course-item-two .course-img { width: auto; margin-right: 0; margin-bottom: 24px; }
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+.tc-lms-page .pagination-text { font-size: 14px; font-weight: 500; }
+@media (max-width: 767.98px) { .tc-lms-page .pagination-text { text-align: center; } }
+.tc-lms-page .pagination { display: flex; gap: 8px; justify-content: flex-end; }
+.tc-lms-page .pagination .page-link {
+  width: 32px;
+  height: 32px;
+  background-color: var(--light);
+  border-radius: 50px !important;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  color: var(--gray-700);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+.tc-lms-page .pagination .page-link:hover { background-color: var(--secondary); color: var(--white); }
+.tc-lms-page .pagination .page-item.active .page-link { background-color: var(--secondary); color: var(--white); }
+
+/* ============================================================
+   noUiSlider (price range)
+   ============================================================ */
+.tc-lms-page .filter-range { padding-top: 10px; }
+.tc-lms-page .noUi-connect { background-color: var(--secondary); }

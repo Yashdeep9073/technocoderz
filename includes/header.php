@@ -30,5 +30,10 @@ if (!isset($currentPage))     $currentPage     = '';
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Techno Coderz Custom CSS -->
   <link rel="stylesheet" href="<?= SITE_URL ?>/assets/css/technocoderz.css?v=<?= filemtime(__DIR__ . '/../assets/css/technocoderz.css') ?>">
+  <!-- TechCADD-style inner-page components -->
+  <?php /* techcadd-style pages use tcm-home.css + Tailwind CDN; tcs-page.css removed */ ?>
+<?php if (!empty($extraHead)) echo $extraHead; ?>
+  <!-- Reveal-on-scroll arming (techcadd-style): hide [data-anim] only while JS is active; 3s watchdog reveals if the engine never loads -->
+  <script>try{if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('anim-armed');window.setTimeout(function(){if(!window.__tcmArmed)document.documentElement.classList.remove('anim-armed');},3000);}}catch(e){}</script>
 </head>
 <body>

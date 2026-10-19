@@ -451,7 +451,7 @@ require_once __DIR__ . '/includes/navbar.php';
           <a href="#syllabus" class="tc-btn tc-btn-primary tc-btn-sm" data-jump="<?= $i ?>">
             <i class="bi bi-list-check"></i> View Syllabus
           </a>
-          <a href="<?= SITE_URL ?>/course-details.php?slug=<?= urlencode($course['slug']) ?>" class="tc-btn tc-btn-secondary tc-btn-sm">
+          <a href="<?= e(coursePageUrl($course['slug'])) ?>" class="tc-btn tc-btn-secondary tc-btn-sm">
             Details
           </a>
         </div>
@@ -522,7 +522,7 @@ require_once __DIR__ . '/includes/navbar.php';
           <?php endif; ?>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;">
-            <a href="<?= SITE_URL ?>/course-details.php?slug=<?= urlencode($course['slug']) ?>" class="tc-btn tc-btn-primary tc-btn-sm">
+            <a href="<?= e(coursePageUrl($course['slug'])) ?>" class="tc-btn tc-btn-primary tc-btn-sm">
               <i class="bi bi-arrow-right"></i> Full Course Details
             </a>
             <a href="<?= e($heroCtaHref) ?>" class="tc-btn tc-btn-secondary tc-btn-sm">

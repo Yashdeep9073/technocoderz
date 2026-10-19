@@ -27,7 +27,7 @@ $message = sanitize($_POST['message'] ?? '');
 // Validate
 $errors = [];
 if (empty($name) || strlen($name) < 2)     $errors[] = 'Name is required.';
-if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Valid email is required.';
+if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Valid email is required.';
 if (empty($course))                         $errors[] = 'Please select a course.';
 if (strlen($name) > 100)                    $errors[] = 'Name too long.';
 
