@@ -19,6 +19,7 @@
   align-items: flex-end;
   gap: 12px;
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  transition: opacity .3s ease, transform .3s ease;
 }
 
 /* ---------- Expandable social links ---------- */
@@ -108,6 +109,17 @@
    WhatsApp). The stack owns the right edge and grows upward, so the
    arrow sits on the bottom row, to the left of the WhatsApp button. */
 #backToTop { right: 92px; bottom: 26px; }
+
+/* Fade the stack + arrow out while the footer bottom bar is on screen so
+   they never cover footer links (Courses/Blog/FAQ/Cookie Settings). The
+   "+" toggle sits above the WhatsApp button (~128px tall zone), which
+   padding alone can't clear without a huge empty gap. */
+body.tc-footer-visible #tcSocialStack,
+body.tc-footer-visible #backToTop {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+}
 
 @media (max-width: 480px) {
   #tcSocialStack { bottom: 16px; right: 14px; }

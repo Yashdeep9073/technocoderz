@@ -229,7 +229,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 3. SUPPORT & ASSISTANCE ============ -->
-<section class="bg-subtle py-20 lg:py-24">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="container-x">
     <div class="mx-auto max-w-3xl text-center">
       <p class="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-up-accent">We are here to help</p>
@@ -293,7 +293,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 4. SCHEDULE VIRTUAL COUNSELLING ============ -->
-<section class="container-x py-20 lg:py-24">
+<section class="container-x py-16 lg:py-24">
   <section class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-hero-600 to-brand-700 px-6 py-10 text-white shadow-[0_30px_90px_-50px_rgba(255,107,0,0.6)] sm:px-10 lg:px-14 lg:py-12">
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(255,194,61,0.35),transparent_38%),radial-gradient(circle_at_10%_90%,rgba(255,255,255,0.16),transparent_35%)]"></div>
     <div class="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
@@ -311,7 +311,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 5. ENQUIRY (FORM + ASIDE) ============ -->
-<section id="enquiry" class="scroll-mt-28 py-20 lg:py-28">
+<section id="enquiry" class="scroll-mt-28 py-16 lg:py-24">
   <div class="container-x grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
     <div data-anim="up">
       <form id="tcContactForm" class="rounded-3xl border border-line bg-white p-8 shadow-[0_30px_80px_-50px_rgba(255,107,0,0.35)] lg:p-10" novalidate>
@@ -413,7 +413,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 6. WHAT A CAMPUS VISIT LOOKS LIKE ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0 grid-lines-light opacity-60"></div>
   <div data-parallax="-60" class="glow-blob right-[-4%] top-[18%] h-[320px] w-[320px] bg-brand-200/50"></div>
   <div class="container-x relative">
@@ -461,7 +461,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 7. CAMPUS & AREAS WE SERVE ============ -->
-<section id="branches" class="relative scroll-mt-28 overflow-hidden bg-white py-24 lg:py-32">
+<section id="branches" class="relative scroll-mt-28 overflow-hidden bg-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0 grid-lines-light opacity-70"></div>
   <div data-parallax="-50" class="glow-blob left-[-6%] top-[12%] h-[340px] w-[340px] bg-brand-200/40"></div>
   <div class="container-x relative">
@@ -535,7 +535,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 8. FAQ ============ -->
-<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-900 py-24 text-white lg:py-32">
+<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-900 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_25%_20%,rgba(255,194,61,0.30),transparent_68%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -589,7 +589,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 9. WHERE TO GO NEXT ============ -->
-<section class="border-t border-line bg-subtle py-20 lg:py-24" aria-labelledby="related-heading">
+<section class="border-t border-line bg-subtle py-16 lg:py-24" aria-labelledby="related-heading">
   <div class="container-x">
     <p class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Keep exploring</p>
     <h2 id="related-heading" data-anim="words" class="mt-3 font-display text-2xl font-extrabold text-up-ink sm:text-3xl">Where to go next</h2>
@@ -612,7 +612,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 10. FINAL CTA ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute right-[6%] top-1/2 h-16 w-16 -translate-y-1/2 rounded-full border border-up-line"></div>
   <div class="pointer-events-none absolute left-[7%] top-[22%] h-10 w-10 rounded-full border border-up-line"></div>
   <div class="container-x relative text-center">

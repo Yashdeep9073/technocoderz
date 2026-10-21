@@ -151,8 +151,8 @@ require_once __DIR__ . '/includes/navbar.php';
 @media(max-width:575px){ .tcd-breadcrumb{ padding:55px 0 45px; } .tcd-crumb-meta{ gap:16px; } }
 
 /* ---- Section ---- */
-.tcd-section{ padding:90px 0; }
-@media(max-width:991px){ .tcd-section{ padding:60px 0; } }
+.tcd-section{ padding:96px 0; }
+@media(max-width:1023.98px){ .tcd-section{ padding:64px 0; } }
 
 /* ---- Main content card ---- */
 .tcd-main-card{ background:#fff; border-radius:14px; padding:34px 34px 42px; box-shadow:0 10px 50px rgba(26,46,85,.07); }

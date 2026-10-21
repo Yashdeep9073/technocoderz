@@ -125,7 +125,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ CATALOG ============ -->
-<section class="bg-subtle py-16 lg:py-20">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
 
     <!-- Filter toolbar -->
@@ -225,7 +225,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-900 py-24 text-white lg:py-32">
+<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-900 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_25%_20%,rgba(255,194,61,0.30),transparent_68%)]"></div>
   <div class="absolute inset-0 grid-lines opacity-40"></div>
   <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
@@ -254,7 +254,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ WHERE TO GO NEXT ============ -->
-<section class="bg-subtle py-24 lg:py-28">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">Keep exploring</span>
@@ -276,7 +276,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="pb-24 lg:pb-28">
+<section class="py-16 lg:py-24">
   <div class="mx-auto max-w-3xl px-5 text-center sm:px-8">
     <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-up-bright">Ready to get started?</span>
     <h2 class="mt-3 font-display text-[2.1rem] font-extrabold leading-tight tracking-tight text-up-ink sm:text-4xl lg:text-[3rem]">Start building your career today.</h2>

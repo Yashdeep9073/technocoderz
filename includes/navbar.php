@@ -734,12 +734,15 @@ li:hover > .tcn-underline::after, .tcn-link.active.tcn-underline::after { width:
 .tcn-mobile-cta { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
 .tcn-mobile-cta .tcn-btn { width: 100%; justify-content: center; }
 
-@media (max-width: 1199.98px) {
-  .tcn-nav { gap: 20px; margin: 0 10px; }
+@media (max-width: 1439.98px) {
+  .tcn-nav { gap: 18px; margin: 0 12px; }
   .tcn-link { font-size: 14px; padding: 10px 6px; }
   .tcn-logo img { height: 48px; }
+  .tcn-header-inner { gap: 14px; }
+  .tcn-actions { gap: 8px; }
+  .tcn-btn { padding: 11px 18px; font-size: 14px; }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1279.98px) {
   .tcn-nav { display: none; }
   .tcn-mobile-toggle { display: inline-flex; }
   .tcn-topbar { display: none; }

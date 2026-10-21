@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  var VERSION = '1.6.1';
+  var VERSION = '1.7.0';
   var STORAGE_KEY = 'techno_coderz_cookie_consent';
   var COOKIE_NAME = 'techno_coderz_cookie_consent';
   var AUTO_DELAY_MS = 1200;
@@ -28,14 +28,14 @@
       var raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
         var o = JSON.parse(raw);
-        if (o && typeof o.analytics === 'boolean') return o;
+        if (o && typeof o.analytics === 'boolean' && o.version === VERSION) return o;
       }
     } catch (e) {}
     try {
       var m = document.cookie.match(new RegExp('(?:^|; )' + COOKIE_NAME + '=([^;]*)'));
       if (m) {
         var o2 = JSON.parse(decodeURIComponent(m[1]));
-        if (o2 && typeof o2.analytics === 'boolean') return o2;
+        if (o2 && typeof o2.analytics === 'boolean' && o2.version === VERSION) return o2;
       }
     } catch (e) {}
     return null;
@@ -168,14 +168,14 @@
     });
 
     /* Auto-open once, unless a choice is already stored.
-       If the homepage demo popup is showing, wait until it closes. */
+       If the enquiry popup is open, wait until it closes. */
     if (!getStored()) {
-      var demo = document.getElementById('tcdpOverlay');
       window.setTimeout(function () {
         if (panel.classList.contains('is-open')) return;
-        if (demo && demo.classList.contains('active')) {
+        var demo = document.getElementById('tceqOverlay');
+        if (demo && demo.classList.contains('tceq-open')) {
           var iv = window.setInterval(function () {
-            if (!demo.classList.contains('active')) { window.clearInterval(iv); open(false); }
+            if (!demo.classList.contains('tceq-open')) { window.clearInterval(iv); open(false); }
           }, 600);
         } else {
           open(false);

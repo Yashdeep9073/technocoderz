@@ -90,7 +90,7 @@ $mapQuery = rawurlencode($address);
 <style>
 .tcf-footer{ background:#f7f9fc; color:var(--text-body); font-size:15px; line-height:1.73; }
 .tcf-footer .container{ max-width:1200px; }
-.tcf-top{ padding:84px 0 72px; }
+.tcf-top{ padding:80px 0; }
 .tcf-widget-title{
   font-family:var(--tc-font-head); font-size:20px; font-weight:800; color:var(--text-heading);
   margin:0 0 24px; letter-spacing:.2px;
@@ -133,12 +133,19 @@ $mapQuery = rawurlencode($address);
 .tcf-bottom-links a:hover{ color:var(--primary); }
 .tcf-bottom-links button{ background:none; border:0; padding:0; margin-left:20px; color:var(--text-body); font-size:14px; font-family:inherit; cursor:pointer; transition:.25s; }
 .tcf-bottom-links button:hover{ color:var(--primary); }
+.tcf-footer .container{ padding-inline: 1.5rem; }
 
-@media(max-width:991px){ .tcf-top{ padding:60px 0; } .tcf-widget-title{ margin-bottom:18px; font-size:18px; } }
+@media(max-width:991px){
+  .tcf-top{ padding:60px 0; } .tcf-widget-title{ margin-bottom:18px; font-size:18px; }
+  /* Extra room for iPhone home bar; floating widgets fade out here via JS (TC.footerWidgets) */
+  .tcf-bottom{ padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px)); }
+}
 @media(max-width:575px){
   .tcf-top{ padding:48px 0; } .tcf-desc{ max-width:none; }
   .tcf-bottom-inner{ justify-content:center; text-align:center; }
   .tcf-bottom-links a{ margin:0 10px; }
+  .tcf-bottom-links button{ margin-left:10px; }
+  .tcf-bottom{ padding-bottom:calc(24px + env(safe-area-inset-bottom, 0px)); }
 }
 </style>
 

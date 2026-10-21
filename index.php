@@ -290,7 +290,7 @@ require_once __DIR__ . '/includes/navbar.php';
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_50%_92%,rgba(255,107,0,0.22),transparent_66%)]"></div>
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_0%,rgba(194,65,12,0.34),transparent_70%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
-  <div class="relative z-10 pb-20 pt-[7.5rem] lg:pb-24 lg:pt-[11rem]">
+  <div class="relative z-10 pb-20 pt-[7.5rem] lg:pb-24 lg:pt-[12rem]">
     <div class="container-x hero-copy text-center">
       <a href="courses.php" class="hero-badge mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-up-soft backdrop-blur-sm transition-all hover:border-accent-yellow/40 hover:bg-white/10 hover:text-white">
         <span class="h-1.5 w-1.5 rounded-full bg-accent-yellow"></span>★ <?= $avgRating ?> on Google · 1:1 Live Training · 100% Placement Support
@@ -437,7 +437,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 3. AI BAND ============ -->
-<section class="relative overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section class="relative overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_20%_10%,#3a2410_0%,transparent_60%),radial-gradient(ellipse_60%_50%_at_90%_80%,#c2410c_0%,transparent_55%)]"></div>
   <div class="absolute inset-0 grid-lines"></div>
   <div class="glow-blob left-[-5%] top-[20%] h-[400px] w-[400px] animate-pulse-glow bg-accent-glow/20"></div>
@@ -473,7 +473,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 4. VISION / MISSION ============ -->
-<section id="vision" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-24 lg:py-32">
+<section id="vision" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0">
     <div class="glow-blob left-[2%] top-[12%] h-[24rem] w-[24rem] bg-brand-300/45"></div>
     <div class="glow-blob right-[10%] bottom-[8%] h-[22rem] w-[22rem] bg-accent-400/35"></div>
@@ -532,7 +532,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 5. DURATIONS ============ -->
-<section id="durations" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section id="durations" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(194,65,12,0.35),transparent_68%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -562,7 +562,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 6. PROCESS ============ -->
-<section class="relative overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-24 lg:py-32">
+<section class="relative overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0">
     <div class="absolute left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-[#ff6b00]/[0.06] blur-[120px]"></div>
     <div class="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-[#ff8a3d]/[0.05] blur-[100px]"></div>
@@ -604,7 +604,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 7. SIX FIELDS ============ -->
-<section class="relative overflow-hidden bg-hero-950 py-20 text-white lg:py-28">
+<section class="relative overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_15%,rgba(194,65,12,0.35),transparent_68%)]"></div>
   <div class="absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -636,7 +636,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 8. COURSE CATEGORIES ============ -->
-<section class="relative overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-24 lg:py-32">
+<section class="relative overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0">
     <div class="glow-blob left-[4%] top-[14%] h-[26rem] w-[26rem] bg-brand-300/50"></div>
     <div class="glow-blob right-[6%] top-[6%] h-[22rem] w-[22rem] bg-accent-400/40"></div>
@@ -683,7 +683,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 9. WHY ============ -->
-<section id="why" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section id="why" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_75%_25%,rgba(194,65,12,0.35),transparent_68%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -718,7 +718,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 10. REVIEWS ============ -->
-<section id="reviews" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-24 lg:py-32">
+<section id="reviews" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0">
     <div class="glow-blob left-[6%] top-[18%] h-[24rem] w-[24rem] bg-brand-300/45"></div>
     <div class="glow-blob right-[8%] bottom-[10%] h-[22rem] w-[22rem] bg-accent-400/35"></div>
@@ -787,7 +787,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 11. TECHNOLOGY STACK ============ -->
-<section data-stack class="relative overflow-hidden bg-hero-950 py-20 lg:py-24">
+<section data-stack class="relative overflow-hidden bg-hero-950 py-16 lg:py-24">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_100%,#3a2410_0%,transparent_70%)] opacity-60"></div>
   <div class="container-x relative text-center">
     <p data-anim="fade" class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-accent-yellow">The stack you will actually touch</p>
@@ -873,7 +873,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 13. FAQS ============ -->
-<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section id="faqs" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_25%_20%,rgba(194,65,12,0.32),transparent_68%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -910,7 +910,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 14. CTA ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute right-[6%] top-1/2 h-16 w-16 -translate-y-1/2 rounded-full border border-up-line"></div>
   <div class="pointer-events-none absolute left-[7%] top-[22%] h-10 w-10 rounded-full border border-up-line"></div>
   <div class="container-x relative text-center">

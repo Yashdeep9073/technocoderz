@@ -174,7 +174,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 3. WHO WE ARE ============ -->
-<section class="py-24 lg:py-32">
+<section class="py-16 lg:py-24">
   <div class="container-x grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-20">
     <div>
       <p data-anim="fade" class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Who we are</p>
@@ -203,7 +203,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 4. SKILL-BUILDING ECOSYSTEM ============ -->
-<section class="relative overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section class="relative overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_10%_20%,#3a2410_0%,transparent_60%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-50"></div>
   <div class="glow-blob right-[6%] top-[8%] h-[320px] w-[320px] bg-accent-glow/15"></div>
@@ -228,7 +228,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 5. TECHNOLOGY DOMAINS ============ -->
-<section class="py-24 lg:py-32">
+<section class="py-16 lg:py-24">
   <div class="container-x">
     <div class="max-w-3xl">
       <div data-anim="fade" class="mb-4 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] border-up-line bg-brand-50 text-up-accent"><span class="h-1.5 w-1.5 rounded-full bg-up-accent"></span>What you can learn</div>
@@ -253,7 +253,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 6. JOURNEY TIMELINE ============ -->
-<section class="relative overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section class="relative overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div aria-hidden="true" class="pointer-events-none absolute -left-1/4 -top-1/3 h-[140%] w-[70%] -rotate-12 bg-gradient-to-br from-brand-600/25 via-brand-700/10 to-transparent blur-[120px]"></div>
   <div aria-hidden="true" class="pointer-events-none absolute -bottom-1/3 -right-1/4 h-[120%] w-[55%] -rotate-12 bg-gradient-to-tl from-accent-glow/20 to-transparent blur-[120px]"></div>
@@ -292,7 +292,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 7. FOUNDER / LEADERSHIP ============ -->
-<section id="founder" class="scroll-mt-32 bg-subtle py-24 lg:py-32">
+<section id="founder" class="scroll-mt-32 bg-subtle py-16 lg:py-24">
   <div class="container-x">
     <div class="mx-auto max-w-3xl text-center">
       <div data-anim="fade" class="mb-4 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] border-up-line bg-brand-50 text-up-accent"><span class="h-1.5 w-1.5 rounded-full bg-up-accent"></span>Leadership</div>
@@ -331,7 +331,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 8. FOUR RULES (VALUES) ============ -->
-<section id="values" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section id="values" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_50%_at_50%_-5%,rgba(194,65,12,0.28),transparent_70%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -383,7 +383,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 9. CAMPUS ============ -->
-<section id="campus" class="scroll-mt-32 py-24 lg:py-32">
+<section id="campus" class="scroll-mt-32 py-16 lg:py-24">
   <div class="container-x">
     <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
       <div data-anim="left" class="relative overflow-hidden rounded-[1.75rem] bg-hero-950 p-10 text-white">
@@ -416,7 +416,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 10. THREE THINGS WORTH READING NEXT ============ -->
-<section class="bg-subtle py-24 lg:py-32">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="container-x">
     <div class="mx-auto max-w-3xl text-center">
       <div data-anim="fade" class="mb-4 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] border-up-line bg-brand-50 text-up-accent"><span class="h-1.5 w-1.5 rounded-full bg-up-accent"></span>More about Techno Coderz</div>
@@ -445,7 +445,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 11. WHY (FOUR THINGS THAT CHANGE THE OUTCOME) ============ -->
-<section id="why" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-24 text-white lg:py-32">
+<section id="why" class="relative scroll-mt-32 overflow-hidden bg-hero-950 py-16 text-white lg:py-24">
   <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_75%_25%,rgba(194,65,12,0.35),transparent_68%)]"></div>
   <div class="pointer-events-none absolute inset-0 grid-lines opacity-40"></div>
   <div class="container-x relative">
@@ -489,7 +489,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 12. REVIEWS MARQUEE ============ -->
-<section id="reviews" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-24 lg:py-32">
+<section id="reviews" class="relative scroll-mt-32 overflow-hidden bg-gradient-to-b from-white via-subtle to-white py-16 lg:py-24">
   <div class="pointer-events-none absolute inset-0">
     <div class="glow-blob left-[6%] top-[18%] h-[24rem] w-[24rem] bg-brand-300/45"></div>
     <div class="glow-blob bottom-[10%] right-[8%] h-[22rem] w-[22rem] bg-accent-400/35"></div>
@@ -553,7 +553,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 13. WHERE TO GO NEXT ============ -->
-<section class="border-t border-line bg-subtle py-20 lg:py-24" aria-labelledby="related-heading">
+<section class="border-t border-line bg-subtle py-16 lg:py-24" aria-labelledby="related-heading">
   <div class="container-x">
     <p class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Keep exploring</p>
     <h2 id="related-heading" data-anim="words" class="mt-3 font-display text-2xl font-extrabold text-up-ink sm:text-3xl">Where to go next</h2>
@@ -578,7 +578,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 14. CTA ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute right-[6%] top-1/2 h-16 w-16 -translate-y-1/2 rounded-full border border-up-line"></div>
   <div class="pointer-events-none absolute left-[7%] top-[22%] h-10 w-10 rounded-full border border-up-line"></div>
   <div class="container-x relative text-center">

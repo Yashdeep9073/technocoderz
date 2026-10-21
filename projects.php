@@ -72,7 +72,7 @@ require_once __DIR__ . '/includes/navbar.php';
   </section>
 
   <!-- PROJECTS GRID -->
-  <section class="py-24 lg:py-32">
+  <section class="py-16 lg:py-24">
     <div class="container-x">
       <div class="mx-auto max-w-3xl text-center">
         <p data-anim="fade" class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Work We've Built</p>
@@ -139,7 +139,7 @@ require_once __DIR__ . '/includes/navbar.php';
   </section>
 
   <!-- WHERE TO GO NEXT -->
-  <section class="border-t border-line bg-subtle py-20 lg:py-24">
+  <section class="border-t border-line bg-subtle py-16 lg:py-24">
     <div class="container-x">
       <p class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Keep Exploring</p>
       <h2 data-anim="words" class="mt-3 font-display text-2xl font-extrabold text-up-ink sm:text-3xl">Where to Go <span class="text-up-accent">Next</span></h2>

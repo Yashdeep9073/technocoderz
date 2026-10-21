@@ -61,11 +61,10 @@
 }
 
 /* ---------------- Section ---------------- */
-.tcl-page .edu-section-gap{ padding: 120px 0; }
+.tcl-page .edu-section-gap{ padding: 96px 0; }
 .tcl-page .bg-color-white{ background-color: #ffffff; }
 .tcl-page .bg-lighten01{ background-color: var(--color-lighten01); }
-@media (max-width: 1199px){ .tcl-page .edu-section-gap{ padding: 95px 0; } }
-@media (max-width: 991px){ .tcl-page .edu-section-gap{ padding: 75px 0; } }
+@media (max-width: 1023.98px){ .tcl-page .edu-section-gap{ padding: 64px 0; } }
 
 /* ---------------- Sorting area ---------------- */
 .tcl-page .edu-sorting-area{

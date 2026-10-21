@@ -15,6 +15,7 @@ const TC = {
     TC.mobileNav();
     TC.scrollReveal();
     TC.backToTop();
+    TC.footerWidgets();
     TC.faq();
     TC.counters();
     TC.typingHero();
@@ -87,6 +88,20 @@ const TC = {
       btn.classList.toggle('show', window.scrollY > 400);
     }, { passive: true });
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  },
+
+  // ----------------------------------------------------------
+  // FOOTER — hide floating widgets (Ask Bhuvi, WhatsApp stack,
+  // back-to-top) while the footer bottom bar is on screen so
+  // footer links / Cookie Settings stay visible & clickable
+  // ----------------------------------------------------------
+  footerWidgets() {
+    const bar = document.querySelector('.tcf-bottom');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      document.body.classList.toggle('tc-footer-visible', entries[0].isIntersecting);
+    }, { threshold: 0 });
+    io.observe(bar);
   },
 
   // ----------------------------------------------------------

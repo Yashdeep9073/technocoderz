@@ -142,7 +142,7 @@ require_once __DIR__ . '/includes/navbar.php';
 <main class="overflow-x-hidden bg-subtle">
 
 <!-- ============ HERO ============ -->
-<section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-700 pb-20 pt-[7.5rem] text-white lg:pb-24 lg:pt-[11rem]">
+<section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-hero-600 to-brand-700 pb-20 pt-[7.5rem] text-white lg:pb-24 lg:pt-[12rem]">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_75%_70%_at_15%_0%,rgba(255,194,61,0.28)_0%,transparent_60%),radial-gradient(ellipse_60%_60%_at_92%_35%,rgba(255,255,255,0.16)_0%,transparent_55%)]"></div>
   <div class="absolute inset-0 grid-lines opacity-60"></div>
   <div class="glow-blob right-[4%] top-[8%] h-[360px] w-[360px] bg-accent-glow/20"></div>
@@ -170,7 +170,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ WHAT THE PLACEMENT CELL DOES ============ -->
-<section class="bg-white py-20 lg:py-24">
+<section class="bg-white py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">What the placement cell does</span>
@@ -192,7 +192,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ SESSION READINESS ============ -->
-<section class="bg-subtle py-20 lg:py-24">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">Session readiness</span>
@@ -216,7 +216,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ SECTORS HIRING ============ -->
-<section class="bg-white py-20 lg:py-24">
+<section class="bg-white py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="mx-auto max-w-2xl text-center">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">Where our students go</span>
@@ -235,7 +235,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ PLACEMENT RECORD SHOWCASE ============ -->
-<section class="bg-subtle py-20 lg:py-24">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">Placement record showcase</span>
@@ -298,7 +298,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ CAPSTONE EVIDENCE ============ -->
-<section class="px-5 pb-24 sm:px-8">
+<section class="px-5 py-16 sm:px-8 lg:py-24">
   <div class="mx-auto max-w-6xl">
     <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-hero-600 to-brand-700 px-7 py-12 text-white shadow-[0_40px_100px_-60px_rgba(122,50,0,0.7)] sm:px-12 lg:py-14">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(255,194,61,0.35),transparent_40%),radial-gradient(circle_at_10%_90%,rgba(255,255,255,0.16),transparent_38%)]"></div>
@@ -320,7 +320,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
 <!-- ============ STUDENT STORIES ============ -->
 <?php if ($stories): ?>
-<section id="stories" class="scroll-mt-32 bg-white py-20 lg:py-24">
+<section id="stories" class="scroll-mt-32 bg-white py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div class="max-w-2xl">
@@ -365,7 +365,7 @@ require_once __DIR__ . '/includes/navbar.php';
 <?php endif; ?>
 
 <!-- ============ WHERE TO GO NEXT ============ -->
-<section class="bg-subtle pb-24 lg:pb-28">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="max-w-2xl">
       <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-hero-600">Keep exploring</span>
@@ -388,7 +388,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="pb-24 lg:pb-28">
+<section class="py-16 lg:py-24">
   <div class="mx-auto max-w-3xl px-5 text-center sm:px-8">
     <span class="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-up-bright">Ready to get started?</span>
     <h2 class="mt-3 font-display text-[2.1rem] font-extrabold leading-tight tracking-tight text-up-ink sm:text-4xl lg:text-[3rem]">Start building your career today.</h2>

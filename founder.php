@@ -138,7 +138,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 2. NAME + QUOTE BAND ============ -->
-<section class="bg-hero-950 pb-16 lg:pb-40">
+<section class="bg-hero-950 pb-16 lg:pb-24">
   <div class="container-x">
     <div class="grid gap-8 lg:grid-cols-[1fr_1.35fr] lg:gap-10">
       <div class="flex flex-col justify-center text-white">
@@ -159,7 +159,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 3. THE PERSON BEHIND ============ -->
-<section class="relative z-10 py-24 lg:py-32">
+<section class="relative z-10 py-16 lg:py-24">
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
     <span class="dot-grid absolute -left-6 top-16 h-40 w-40 opacity-70"></span>
   </div>
@@ -195,7 +195,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 4. PULL QUOTE ============ -->
-<section class="relative overflow-hidden bg-brand-100 py-20 text-hero-950 lg:py-28">
+<section class="relative overflow-hidden bg-brand-100 py-16 text-hero-950 lg:py-24">
   <span aria-hidden="true" class="pointer-events-none absolute -left-4 top-2 select-none font-display text-[14rem] font-extrabold leading-none text-up-accent/15 lg:text-[20rem]">&ldquo;</span>
   <div class="container-x relative mx-auto max-w-3xl text-center">
     <blockquote data-anim="words" class="font-display text-[2rem] font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">You learn it by building it.</blockquote>
@@ -204,7 +204,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 5. FIVE THINGS THAT WIDENED ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="container-x relative">
     <div class="mx-auto max-w-2xl text-center">
       <p data-anim="fade" class="text-[0.7rem] font-bold uppercase tracking-[0.3em] text-up-accent">Under his leadership</p>
@@ -236,7 +236,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 6. TEN YEARS, ONE METHOD ============ -->
-<section class="relative overflow-hidden py-24 lg:py-32">
+<section class="relative overflow-hidden py-16 lg:py-24">
   <span aria-hidden="true" class="dot-grid pointer-events-none absolute bottom-20 right-0 h-48 w-48 opacity-60"></span>
   <span aria-hidden="true" class="absolute right-5 top-1/2 hidden -translate-y-1/2 text-[0.65rem] font-bold uppercase tracking-[0.4em] text-up-muted/50 xl:block [writing-mode:vertical-rl] rotate-180">Since 2016</span>
   <div class="container-x relative grid gap-12 lg:grid-cols-[22rem_1fr] lg:gap-16 xl:grid-cols-[26rem_1fr]">
@@ -270,7 +270,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 7. LEADERSHIP TEAM (horizontal scroller) ============ -->
-<section id="team" class="relative overflow-hidden bg-[#fafafa] py-20 lg:py-28">
+<section id="team" class="relative overflow-hidden bg-[#fafafa] py-16 lg:py-24">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-line to-transparent"></div>
   <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-line to-transparent"></div>
   <div class="container-x relative">
@@ -326,7 +326,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 8. WHERE TO GO NEXT ============ -->
-<section class="border-t border-line bg-subtle py-20 lg:py-24" aria-labelledby="related-heading">
+<section class="border-t border-line bg-subtle py-16 lg:py-24" aria-labelledby="related-heading">
   <div class="container-x">
     <p class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Keep exploring</p>
     <h2 id="related-heading" data-anim="words" class="mt-3 font-display text-2xl font-extrabold text-up-ink sm:text-3xl">Where to go next</h2>
@@ -345,7 +345,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 9. CTA ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute right-[6%] top-1/2 h-16 w-16 -translate-y-1/2 rounded-full border border-up-line"></div>
   <div class="pointer-events-none absolute left-[7%] top-[22%] h-10 w-10 rounded-full border border-up-line"></div>
   <div class="container-x relative text-center">

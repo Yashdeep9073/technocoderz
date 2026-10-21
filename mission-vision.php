@@ -96,7 +96,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 2. VISION & MISSION ============ -->
-<section class="py-24 lg:py-32">
+<section class="py-16 lg:py-24">
   <div class="container-x grid gap-6 lg:grid-cols-2 lg:gap-8">
     <div data-anim="left" class="relative overflow-hidden rounded-[1.75rem] bg-hero-950 p-9 text-white lg:p-12">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,107,0,0.28),transparent_65%)]"></div>
@@ -120,7 +120,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 3. FOUR COMMITMENTS ============ -->
-<section class="bg-subtle py-24 lg:py-32">
+<section class="bg-subtle py-16 lg:py-24">
   <div class="container-x">
     <div class="mx-auto max-w-3xl text-center">
       <p data-anim="fade" class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">What it commits us to</p>
@@ -147,7 +147,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 4. WHERE TO GO NEXT ============ -->
-<section class="border-t border-line bg-subtle py-20 lg:py-24" aria-labelledby="related-heading">
+<section class="border-t border-line bg-subtle py-16 lg:py-24" aria-labelledby="related-heading">
   <div class="container-x">
     <p class="text-xs font-bold uppercase tracking-[0.16em] text-up-accent">Keep exploring</p>
     <h2 id="related-heading" data-anim="words" class="mt-3 font-display text-2xl font-extrabold text-up-ink sm:text-3xl">Where to go next</h2>
@@ -166,7 +166,7 @@ require_once __DIR__ . '/includes/navbar.php';
 </section>
 
 <!-- ============ 5. CTA ============ -->
-<section class="relative overflow-hidden bg-subtle py-24 lg:py-32">
+<section class="relative overflow-hidden bg-subtle py-16 lg:py-24">
   <div class="pointer-events-none absolute right-[6%] top-1/2 h-16 w-16 -translate-y-1/2 rounded-full border border-up-line"></div>
   <div class="pointer-events-none absolute left-[7%] top-[22%] h-10 w-10 rounded-full border border-up-line"></div>
   <div class="container-x relative text-center">
